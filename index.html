@@ -3,76 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Danny Ali.exe</title>
-  <link rel="stylesheet" href="https://unpkg.com/98.css">
-  <style>
-    body {
-      margin: 20px;
-      background: teal;
-      font-family: 'MS Sans Serif', sans-serif;
-    }
-    .window {
-      margin-bottom: 20px;
-      max-width: 600px;
-    }
-    .title-bar-text {
-      white-space: nowrap;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    .content a {
-      word-break: break-all;
-    }
-  </style>
+  <title>Danny Ali</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-  <div class="window" style="width: 100%;">
-    <div class="title-bar">
-      <div class="title-bar-text">Danny Ali - Home</div>
+<body class="xbox-dashboard">
+  <!-- Main “hub” tile -->
+  <div class="tile hub-tile">
+    <div class="tile-header">
+      <span class="tile-title">Danny Ali</span>
     </div>
-    <div class="window-body">
-      <p>welcome to the official home of Danny Ali!1! choose an option below:</p>
-      <ul>
-        <li><a href="#music">🎵 New Music</a></li>
-        <li><a href="#events">📅 Upcoming Events</a></li>
-        <li><a href="#merch">🛍️ Merch</a></li>
-        <li><a href="#booking">📨 Booking</a></li>
-        <li><a href="#videos">📹 Videos</a></li>
+    <div class="tile-body">
+      <p>Select a section:</p>
+      <ul class="nav-tiles">
+        <li><a href="#music" class="nav-link">🎵 New Music</a></li>
+        <li><a href="#events" class="nav-link">📅 Upcoming Events</a></li>
+        <li><a href="#merch" class="nav-link">🛍️ Merch</a></li>
+        <li><a href="#booking" class="nav-link">📨 Booking</a></li>
+        <li><a href="#videos" class="nav-link">📹 Videos</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="window" id="music">
-    <div class="title-bar">
-      <div class="title-bar-text">New Music</div>
+  <!-- New Music tile -->
+  <div class="tile section-tile" id="music">
+    <div class="tile-header">
+      <span class="tile-title">New Music</span>
     </div>
-    <div class="window-body content">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXwn0zRDseeArBrG_9Mz_J7Rcl7yLWYNsaUg&s" alt="New Song Artwork">
-      <p><a href="https://venice.lnk.to/rippin-the-seams" target="_blank">🎧 Listen Now</a></p>
+    <div class="tile-body">
+      <p><a href="https://venice.lnk.to/rippin-the-seams" target="_blank" class="tile-button">Listen to my latest track</a></p>
     </div>
   </div>
 
- <div class="window section-window" id="events">
-    <div class="title-bar">
-      <div class="title-bar-text">Upcoming Events</div>
+  <!-- Upcoming Events tile (with Bandsintown widget) -->
+  <div class="tile section-tile" id="events">
+    <div class="tile-header">
+      <span class="tile-title">Upcoming Events</span>
     </div>
-    <div class="window-body">
+    <div class="tile-body">
       <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
       <a class="bit-widget-initializer"
         data-artist-name="id_14219875"
         data-events-to-display=""
-        data-background-color="rgba(255,255,255,1)"
-        data-separator-color="rgba(221,221,221,1)"
-        data-text-color="rgba(66,66,66,1)"
-        data-font="Helvetica"
+        data-background-color="rgba(30,30,30,0.9)"
+        data-separator-color="rgba(60,60,60,1)"
+        data-text-color="rgba(225,225,225,1)"
+        data-font="Segoe UI"
         data-auto-style="true"
         data-button-label-capitalization="uppercase"
         data-header-capitalization="uppercase"
@@ -88,33 +63,33 @@
         data-display-limit="all"
         data-date-format="MMM. D, YYYY"
         data-date-orientation="horizontal"
-        data-date-border-color="#4A4A4A"
+        data-date-border-color="#10A22D"
         data-date-border-width="1px"
         data-date-capitalization="capitalize"
-        data-date-border-radius="10px"
+        data-date-border-radius="5px"
         data-event-ticket-cta-size="medium"
         data-event-custom-ticket-text=""
         data-event-ticket-text="TICKETS"
         data-event-ticket-icon="false"
         data-event-ticket-cta-text-color="rgba(255,255,255,1)"
-        data-event-ticket-cta-bg-color="rgba(74,74,74,1)"
-        data-event-ticket-cta-border-color="rgba(74,74,74,1)"
+        data-event-ticket-cta-bg-color="rgba(16,162,45,1)"
+        data-event-ticket-cta-border-color="rgba(16,162,45,1)"
         data-event-ticket-cta-border-width="0px"
-        data-event-ticket-cta-border-radius="2px"
+        data-event-ticket-cta-border-radius="4px"
         data-sold-out-button-text-color="rgba(255,255,255,1)"
-        data-sold-out-button-background-color="rgba(74,74,74,1)"
-        data-sold-out-button-border-color="rgba(74,74,74,1)"
+        data-sold-out-button-background-color="rgba(100,100,100,1)"
+        data-sold-out-button-border-color="rgba(100,100,100,1)"
         data-sold-out-button-clickable="true"
         data-event-rsvp-position="left"
         data-event-rsvp-cta-size="medium"
         data-event-rsvp-only-show-icon="false"
         data-event-rsvp-text="RSVP"
         data-event-rsvp-icon="false"
-        data-event-rsvp-cta-text-color="rgba(74,74,74,1)"
-        data-event-rsvp-cta-bg-color="rgba(255,255,255,1)"
-        data-event-rsvp-cta-border-color="rgba(74,74,74,1)"
+        data-event-rsvp-cta-text-color="rgba(16,162,45,1)"
+        data-event-rsvp-cta-bg-color="rgba(30,30,30,1)"
+        data-event-rsvp-cta-border-color="rgba(16,162,45,1)"
         data-event-rsvp-cta-border-width="1px"
-        data-event-rsvp-cta-border-radius="2px"
+        data-event-rsvp-cta-border-radius="4px"
         data-follow-section-position="top"
         data-follow-section-alignment="center"
         data-follow-section-header-text="Get updates on new shows, new music, and more"
@@ -122,21 +97,21 @@
         data-follow-section-cta-text="FOLLOW"
         data-follow-section-cta-icon="false"
         data-follow-section-cta-text-color="rgba(255,255,255,1)"
-        data-follow-section-cta-bg-color="rgba(74,74,74,1)"
-        data-follow-section-cta-border-color="rgba(74,74,74,1)"
+        data-follow-section-cta-bg-color="rgba(16,162,45,1)"
+        data-follow-section-cta-border-color="rgba(16,162,45,1)"
         data-follow-section-cta-border-width="0px"
-        data-follow-section-cta-border-radius="2px"
+        data-follow-section-cta-border-radius="4px"
         data-play-my-city-position="bottom"
         data-play-my-city-alignment="center"
         data-play-my-city-header-text="Don’t see a show near you?"
         data-play-my-city-cta-size="medium"
         data-play-my-city-cta-text="REQUEST A SHOW"
         data-play-my-city-cta-icon="false"
-        data-play-my-city-cta-text-color="rgba(74,74,74,1)"
-        data-play-my-city-cta-bg-color="rgba(255,255,255,1)"
-        data-play-my-city-cta-border-color="rgba(74,74,74,1)"
+        data-play-my-city-cta-text-color="rgba(16,162,45,1)"
+        data-play-my-city-cta-bg-color="rgba(30,30,30,1)"
+        data-play-my-city-cta-border-color="rgba(16,162,45,1)"
         data-play-my-city-cta-border-width="0px"
-        data-play-my-city-cta-border-radius="2px"
+        data-play-my-city-cta-border-radius="4px"
         data-optin-font=""
         data-optin-text-color=""
         data-optin-bg-color=""
@@ -150,38 +125,39 @@
         data-app-id=""
         data-affil-code=""
         data-bit-logo-position="bottomRight"
-        data-bit-logo-color="rgba(66,66,66,1)">
+        data-bit-logo-color="rgba(225,225,225,1)">
       </a>
     </div>
   </div>
 
-  <div class="window" id="merch">
-    <div class="title-bar">
-      <div class="title-bar-text">Merch</div>
+  <!-- Merch tile -->
+  <div class="tile section-tile" id="merch">
+    <div class="tile-header">
+      <span class="tile-title">Merch</span>
     </div>
-    <div class="window-body content">
-      <img src="https://stripe-camo.global.ssl.fastly.net/b2ae99081b6cbef79be59973100b0abac16cd6bbf5a7272d5c43694827625ac8/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a64463878546c706d53444248596a566e596a5a5a65554a4b66475a7358327870646d5666646b354c4d314e6159586c7263466331544531744d31644a65566f786446566d30307a356d3973364b78/6d65726368616e745f69643d616363745f314e5a6648304762356762365979424a26636c69656e743d5041594d454e545f50414745" alt="Merch">
-      <p><a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank">🛒 Shop Now</a></p>
-    </div>
-  </div>
-
-  <div class="window" id="booking">
-    <div class="title-bar">
-      <div class="title-bar-text">Booking</div>
-    </div>
-    <div class="window-body content">
-      <p><a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank">📨 Book Danny Ali</a></p>
+    <div class="tile-body">
+      <p><a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank" class="tile-button">Visit my merch store</a></p>
     </div>
   </div>
 
-  <div class="window" id="videos">
-    <div class="title-bar">
-      <div class="title-bar-text">Videos</div>
+  <!-- Booking tile -->
+  <div class="tile section-tile" id="booking">
+    <div class="tile-header">
+      <span class="tile-title">Booking</span>
     </div>
-    <div class="window-body content">
-      <iframe src="https://www.youtube.com/embed/3f4sWmZEUDk" allowfullscreen></iframe>
+    <div class="tile-body">
+      <p><a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank" class="tile-button">Book me</a></p>
     </div>
   </div>
 
+  <!-- Videos tile -->
+  <div class="tile section-tile" id="videos">
+    <div class="tile-header">
+      <span class="tile-title">Videos</span>
+    </div>
+    <div class="tile-body">
+      <iframe src="https://www.youtube.com/embed/3f4sWmZEUDk" frameborder="0" allowfullscreen class="video-frame"></iframe>
+    </div>
+  </div>
 </body>
 </html>
