@@ -1,19 +1,27 @@
-/* Reset margins/padding */
+/* Reset vs. Windows 95 look */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Desktop background (classic Windows 95 teal) */
+/* Entire page stays the classic Windows 95 teal */
+body {
+  background: #008080;
+  font-family: 'Tahoma', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* “Desktop” bar at the top for icons */
 .desktop {
-  background-color: #008080;
-  width: 100vw;
-  height: 200px; /* just enough to show icons above the windows */
+  width: 100%;
+  height: 200px; /* Enough space to show icons on “desktop” */
+  background: #008080; /* same teal */
   position: relative;
 }
 
-/* Icon column on left side of desktop */
+/* Column of icons on the left */
 .icon-column {
   position: absolute;
   top: 20px;
@@ -23,7 +31,7 @@
   gap: 24px;
 }
 
-/* Each desktop “shortcut” */
+/* Each “shortcut” icon (48×48 px) with label */
 .desktop-icon {
   text-align: center;
   width: 80px;
@@ -33,17 +41,17 @@
 .desktop-icon img {
   width: 48px;
   height: 48px;
-  border: 2px solid #ffffff;
-  background: #c0c0c0;
+  border: 2px solid #ffffff; /* white border to mimic 90s icon houses */
+  background: #c0c0c0; /* light gray behind icon, like Win95 icons */
   border-radius: 4px;
 }
 
 .desktop-icon span {
   display: block;
   margin-top: 4px;
-  font-family: 'Tahoma', sans-serif;
   font-size: 0.85rem;
   color: #ffffff;
+  text-shadow: 1px 1px #000; /* subtle shadow to read on teal */
 }
 
 .desktop-icon a {
@@ -51,63 +59,57 @@
   text-decoration: none;
 }
 
-/* Section windows container scrolls below desktop area */
+/* Container for all the “windows” below the desktop area */
 .section-windows {
-  padding-top: 220px; /* push windows below desktop “row” */
+  padding-top: 220px; /* push windows below the “desktop” row */
   padding-left: 20px;
   padding-right: 20px;
 }
 
-/* Window positioning: stacked with some separation */
+/* Each 98.css window sits here, stacked vertically */
 .window {
   margin-bottom: 24px;
-  width: 600px;
+  width: 600px; /* fixed width for each window */
 }
 
-/* Override 98.css window-body to add padding */
+/* Add a bit of padding inside the window body */
 .window-body {
   padding: 12px;
 }
 
-/* Body background for the rest of the page (below desktop) */
-body {
-  background: #008080; /* same teal */
-  font-family: 'Tahoma', sans-serif;
-}
-
-/* Style for cover art and merch art inside windows */
+/* Cover art & merch images inside windows */
 .cover-art,
 .merch-art {
   max-width: 100%;
-  border: 2px solid #c0c0c0;
+  border: 2px solid #c0c0c0; /* 90s style gray border */
   margin-bottom: 12px;
 }
 
-/* Classic Windows 95 button style override */
-.94-btn {
+/* Classic Windows 95 button style */
+.btn-95 {
   display: inline-block;
   padding: 6px 16px;
-  background: #c0c0c0;
-  border: 2px solid #808080;
+  background: #c0c0c0;           /* light gray button face */
+  border: 2px solid #808080;     /* dark gray border */
   font-size: 0.9rem;
-  color: #000000;
+  color: #000;
   text-decoration: none;
   font-family: 'Tahoma', sans-serif;
-  box-shadow: 1px 1px 0 #ffffff inset;
+  box-shadow: 1px 1px 0 #ffffff inset; /* inset white highlight */
   border-radius: 2px;
 }
 
-.94-btn:active {
+.btn-95:active {
   /* simulate pressed button */
   box-shadow: none;
   transform: translate(1px, 1px);
 }
 
-/* Iframe (video) styling inside window */
+/* Iframe (YouTube) styling inside “Videos” window */
 .window iframe {
   width: 100%;
   height: 320px;
-  border: 2px solid #808080;
+  border: 2px solid #808080; /* dark gray border */
   border-radius: 2px;
   background: #000;
 }
