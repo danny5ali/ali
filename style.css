@@ -1,0 +1,108 @@
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  background: #008080;
+  font-family: 'Tahoma', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* Horizontal icon bar at the top */
+.desktop-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  background: #008080;
+  padding: 20px 20px 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Each desktop icon */
+.desktop-icon {
+  text-align: center;
+  width: 80px;
+  cursor: pointer;
+}
+
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #ffffff;
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+.desktop-icon span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-shadow: 1px 1px #000;
+}
+
+.desktop-icon a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Windows below the bar */
+.section-windows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Individual windows */
+.window {
+  width: 600px;
+}
+
+.window-body {
+  padding: 12px;
+}
+
+/* Images */
+.cover-art,
+.merch-art {
+  max-width: 100%;
+  border: 2px solid #c0c0c0;
+  margin-bottom: 12px;
+}
+
+/* Button styling */
+.btn-95 {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  font-size: 0.9rem;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Tahoma', sans-serif;
+  box-shadow: 1px 1px 0 #ffffff inset;
+  border-radius: 2px;
+}
+
+.btn-95:active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+/* YouTube iframe */
+.window iframe {
+  width: 100%;
+  height: 320px;
+  border: 2px solid #808080;
+  border-radius: 2px;
+  background: #000;
+}
