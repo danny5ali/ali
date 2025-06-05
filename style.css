@@ -1,142 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Danny Ali.exe</title>
-  <link rel="stylesheet" href="https://unpkg.com/98.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Horizontal Taskbar of Icons -->
-  <div class="desktop-bar">
-    <div class="desktop-icon">
-      <img src="win95_icons/music (1).png" alt="Music Icon" />
-      <span><a href="#music">New Music</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/events (1).png" alt="Events Icon" />
-      <span><a href="#events">Events</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/merch (1).png" alt="Merch Icon" />
-      <span><a href="#merch">Merch</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/booking (1).png" alt="Booking Icon" />
-      <span><a href="#booking">Booking</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/videos (1).png" alt="Videos Icon" />
-      <span><a href="#videos">Videos</a></span>
-    </div>
-  </div>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Windows for each section -->
-  <div class="section-windows">
-    <!-- New Music -->
-    <div class="window" id="music">
-      <div class="title-bar">
-        <div class="title-bar-text">🎵 New Music</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <img src="win95_icons/IMG_5199.JPG" alt="RIPPIN THE SEAMS Cover Art" class="cover-art" />
-        <a href="https://venice.lnk.to/rippin-the-seams" target="_blank" class="btn-95">
-          Listen to “RIPPIN THE SEAMS”
-        </a>
-      </div>
-    </div>
+/* Body styling */
+body {
+  background: #008080;
+  font-family: 'Tahoma', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
 
-    <!-- Upcoming Events -->
-    <div class="window" id="events">
-      <div class="title-bar">
-        <div class="title-bar-text">📅 Upcoming Events</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
-        <a
-          class="bit-widget-initializer"
-          data-artist-name="id_14219875"
-          data-background-color="rgba(240,240,240,1)"
-          data-separator-color="rgba(200,200,200,1)"
-          data-text-color="rgba(32,32,32,1)"
-          data-font="Tahoma"
-          data-auto-style="true"
-          data-date-format="MMM. D, YYYY"
-          data-date-orientation="horizontal"
-          data-event-ticket-text="TICKETS"
-          data-event-rsvp-text="RSVP"
-        ></a>
-      </div>
-    </div>
+/* Horizontal icon bar at the top */
+.desktop-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  background: #008080;
+  padding: 20px 20px 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-    <!-- Merch -->
-    <div class="window" id="merch">
-      <div class="title-bar">
-        <div class="title-bar-text">🛍️ Merch</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <img
-          src="https://stripe-camo.global.ssl.fastly.net/.../50414745"
-          alt="Merch"
-          class="merch-art"
-        />
-        <a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank" class="btn-95">
-          Visit Store
-        </a>
-      </div>
-    </div>
+/* Each desktop icon */
+.desktop-icon {
+  text-align: center;
+  width: 80px;
+  cursor: pointer;
+}
 
-    <!-- Booking -->
-    <div class="window" id="booking">
-      <div class="title-bar">
-        <div class="title-bar-text">📨 Booking</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank" class="btn-95">
-          Book Danny Ali
-        </a>
-      </div>
-    </div>
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #ffffff;
+  background: #c0c0c0;
+  border-radius: 4px;
+}
 
-    <!-- Videos -->
-    <div class="window" id="videos">
-      <div class="title-bar">
-        <div class="title-bar-text">📹 Videos</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <iframe
-          src="https://www.youtube.com/embed/3f4sWmZEUDk"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+.desktop-icon span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-shadow: 1px 1px #000;
+}
+
+.desktop-icon a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Windows below the bar */
+.section-windows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Individual windows */
+.window {
+  width: 600px;
+}
+
+.window-body {
+  padding: 12px;
+}
+
+/* Images */
+.cover-art,
+.merch-art {
+  max-width: 100%;
+  border: 2px solid #c0
