@@ -1,17 +1,119 @@
-/* Optional additional styles to override or extend 98.css */
-body {
-  background-color: teal;
-  margin: 20px;
-  font-family: 'MS Sans Serif', sans-serif;
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* Xbox 360–style background */
+body.xbox-dashboard {
+  background: #0f0f0f url('https://i.imgur.com/5f2QX3U.jpg') no-repeat center
+    center; /* placeholder dark/green abstract texture */
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e1e1e1;
+  padding: 20px;
 }
 
-iframe {
+/* Common tile styling */
+.tile {
+  background: rgba(20, 20, 20, 0.9);
+  border: 2px solid #10a22d;
+  border-radius: 4px;
   width: 100%;
-  height: 300px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Tile header (title bar) */
+.tile-header {
+  background: #10a22d;
+  padding: 8px 12px;
+  border-bottom: 2px solid #0a6e17;
+  display: flex;
+  align-items: center;
+}
+
+.tile-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Tile body content */
+.tile-body {
+  background: #1b1b1b;
+  padding: 16px;
+  color: #e1e1e1;
+  line-height: 1.5;
+}
+
+/* Hub tile special spacing */
+.hub-tile {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Navigation list inside hub tile */
+.nav-tiles {
+  list-style: none;
+}
+
+.nav-tiles li {
+  margin: 12px 0;
+}
+
+.nav-link {
+  display: inline-block;
+  color: #10a22d;
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #10a22d;
+  border-radius: 3px;
+  transition: background 0.25s ease;
+}
+
+.nav-link:hover {
+  background: rgba(16, 162, 45, 0.2);
+}
+
+/* Buttons inside section tiles */
+.tile-button {
+  display: inline-block;
+  color: #ffffff;
+  background: #10a22d;
+  text-decoration: none;
+  padding: 10px 16px;
   border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background 0.25s ease;
+}
+
+.tile-button:hover {
+  background: #0d7c1e;
+}
+
+/* Section tiles spacing */
+.section-tile {
+  margin-top: 0;
+}
+
+/* Video iframe styling */
+.video-frame {
+  width: 100%;
+  height: 315px;
+  border: 2px solid #10a22d;
+  border-radius: 4px;
+}
+
+/* Make sure anchors don’t scroll the body off-screen */
+#music,
+#events,
+#merch,
+#booking,
+#videos {
+  scroll-margin-top: 80px;
 }
