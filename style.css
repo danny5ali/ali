@@ -106,3 +106,24 @@ body {
   border-radius: 2px;
   background: #000;
 }
+@media (max-width: 768px) {
+  .desktop-bar {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 10px;
+  }
+
+  .window {
+    width: 90vw; /* Make windows fit mobile screen */
+  }
+
+  .window iframe {
+    height: 200px; /* smaller Twitch/YT embeds on mobile */
+  }
+
+  .cover-art,
+  .merch-art {
+    width: 100%;
+    height: auto;
+  }
+}
