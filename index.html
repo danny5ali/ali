@@ -18,6 +18,16 @@
   </div>
 
   <!-- Popup content -->
+  <!-- Windows 98 Style Smartlink Pop-up -->
+<div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; border: 2px solid #000; box-shadow: 8px 8px #000; width: 90%; max-width: 400px; z-index: 9999; font-family: 'Tahoma', sans-serif;">
+
+  <!-- Popup header with close button -->
+  <div style="background: #000080; color: #fff; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center; cursor: move;">
+    <span>Windows Media Player</span>
+    <button onclick="closeSmartlinkPopup()" style="background: #c0c0c0; border: 2px solid #000; width: 20px; height: 20px; font-weight: bold; cursor: pointer;">X</button>
+  </div>
+
+  <!-- Popup content -->
   <div style="padding: 20px; text-align: center;">
     <h2 style="font-size: 20px; margin-bottom: 10px;">STREAM 'NIGHTS LIKE THIS' NOW</h2>
     <img src="/win95_icons/IMG_3920.JPG" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
@@ -31,6 +41,20 @@
     <a href="https://www.youtube.com/playlist?list=OLAK5uy_nml65TpVpWY-GlWF3UTDP4FYNeuLJp4_g" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Watch on YouTube</a>
   </div>
 </div>
+
+<!-- Script to show popup once per session -->
+<script>
+  function closeSmartlinkPopup() {
+    document.getElementById('smartlink-popup').style.display = 'none';
+    sessionStorage.setItem('smartlink-popup-shown', 'true');
+  }
+
+  window.onload = function() {
+    if (!sessionStorage.getItem('smartlink-popup-shown')) {
+      document.getElementById('smartlink-popup').style.display = 'block';
+    }
+  };
+</script>
 
 <!-- Script to show popup on page load -->
 <script>
