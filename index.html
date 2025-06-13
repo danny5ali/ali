@@ -8,6 +8,37 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Windows 98 Style Smartlink Pop-up -->
+<div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; border: 2px solid #000; box-shadow: 8px 8px #000; width: 90%; max-width: 400px; z-index: 9999; font-family: 'Tahoma', sans-serif;">
+
+  <!-- Popup header with close button -->
+  <div style="background: #000080; color: #fff; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center; cursor: move;">
+    <span>Windows Media Player</span>
+    <button onclick="document.getElementById('smartlink-popup').style.display='none'" style="background: #c0c0c0; border: 2px solid #000; width: 20px; height: 20px; font-weight: bold; cursor: pointer;">X</button>
+  </div>
+
+  <!-- Popup content -->
+  <div style="padding: 20px; text-align: center;">
+    <h2 style="font-size: 20px; margin-bottom: 10px;">STREAM 'NIGHTS LIKE THIS' NOW</h2>
+    <img src="win95_icons/IMG_3920.JPG" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
+
+    <div style="margin-bottom: 20px; color: #000;">Choose your platform:</div>
+
+    <a href="https://open.spotify.com/playlist/0dqfpwatL0gVHYzAEEq4W8" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Spotify</a>
+
+    <a href="https://music.apple.com/us/album/nights-like-this-feat-iiinfinite-single/1818883884" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Apple Music</a>
+
+    <a href="https://www.youtube.com/playlist?list=OLAK5uy_nml65TpVpWY-GlWF3UTDP4FYNeuLJp4_g" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Watch on YouTube</a>
+  </div>
+</div>
+
+<!-- Script to show popup on page load -->
+<script>
+  window.onload = function() {
+    document.getElementById('smartlink-popup').style.display = 'block';
+  };
+</script>
+
   <!-- Horizontal Taskbar of Icons -->
   <div class="desktop-bar">
     <div class="desktop-icon">
@@ -40,18 +71,15 @@
     
     <h2 style="font-size: 20px; margin-bottom: 10px;">STREAM 'NIGHTS LIKE THIS' NOW</h2>
     
-    <img src="YOUR_ALBUM_COVER_URL_HERE" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
+    <img src="win95_icons/IMG_3920.JPG" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
     
     <div style="margin-bottom: 20px; color: #000;">Choose your platform:</div>
     
-    <a href="YOUR_SPOTIFY_LINK_HERE" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Spotify</a>
+    <a href="https://open.spotify.com/playlist/0dqfpwatL0gVHYzAEEq4W8" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Spotify</a>
     
-    <a href="YOUR_APPLE_MUSIC_LINK_HERE" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Apple Music</a>
+    <a href="https://music.apple.com/us/album/nights-like-this-feat-iiinfinite-single/1818883884" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Listen on Apple Music</a>
     
-    <a href="YOUR_YOUTUBE_LINK_HERE" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Watch on YouTube</a>
-    
-    <a href="YOUR_OTHER_PLATFORM_LINK_HERE" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">More Platforms</a>
-    
+    <a href="https://www.youtube.com/playlist?list=OLAK5uy_nml65TpVpWY-GlWF3UTDP4FYNeuLJp4_g" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">Watch on YouTube</a>
   </div>
 </section>
 
