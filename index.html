@@ -8,39 +8,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Windows 98 Style Smartlink Pop-up -->
+  <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+
+<!-- Windows 98 Style Event Tickets Pop-up -->
 <div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; border: 2px solid #000; box-shadow: 8px 8px #000; width: 90%; max-width: 400px; max-height: 90vh; overflow-y: auto; z-index: 9999; font-family: 'Tahoma', sans-serif;">
 
   <!-- Popup header with close button -->
   <div style="background: #000080; color: #fff; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center;">
-    <span>Windows Media Player</span>
+    <span>Event Tickets</span>
     <button onclick="closeSmartlinkPopup()" style="background: #c0c0c0; border: 2px solid #000; width: 20px; height: 20px; font-weight: bold; cursor: pointer;">X</button>
   </div>
 
- <!-- Popup content: Events Tickets Box -->
-<div style="padding: 16px; text-align: center;">
-  <h2 style="font-size: 18px; margin-bottom: 10px;">UPCOMING EVENTS</h2>
-  <style>
-    .bit-widget-wrapper {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-  </style>
-  <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
-  <div class="bit-widget-wrapper">
-    <a
-      class="bit-widget-initializer"
-      data-artist-name="id_14219875"
-      data-background-color="rgba(255,255,255,1)"
-      data-separator-color="rgba(200,200,200,1)"
-      data-text-color="rgba(0,0,0,1)"
-      data-font="Tahoma"
-      data-auto-style="true"
-      data-date-format="MMM. D, YYYY"
-      data-date-orientation="horizontal"
-      data-event-ticket-text="TICKETS"
-      data-event-rsvp-text="RSVP"
-    ></a>
+  <!-- Popup content -->
+  <div style="padding: 16px; text-align: center;">
+    <h2 style="font-size: 18px; margin-bottom: 10px;">UPCOMING EVENTS</h2>
+    <div class="bit-widget-wrapper" style="max-height: 300px; overflow-y: auto;">
+      <a
+        class="bit-widget-initializer"
+        data-artist-name="id_14219875"
+        data-background-color="rgba(255,255,255,1)"
+        data-separator-color="rgba(200,200,200,1)"
+        data-text-color="rgba(0,0,0,1)"
+        data-font="Tahoma"
+        data-auto-style="true"
+        data-date-format="MMM. D, YYYY"
+        data-date-orientation="horizontal"
+        data-event-ticket-text="TICKETS"
+        data-event-rsvp-text="RSVP"
+      ></a>
+    </div>
   </div>
 </div>
 
@@ -53,34 +49,8 @@
 
   window.onload = function() {
     if (!sessionStorage.getItem('smartlink-popup-shown')) {
-      document.getElementById('smartlink-popup').style.display = 'block';
-    }
-  };
-</script>
+      documen
 
-  <!-- Horizontal Taskbar of Icons -->
-  <div class="desktop-bar">
-    <div class="desktop-icon">
-      <img src="win95_icons/music (1).png" alt="Music Icon" />
-      <span><a href="#music">New Music</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/events (1).png" alt="Events Icon" />
-      <span><a href="#events">Events</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/merch (1).png" alt="Merch Icon" />
-      <span><a href="#merch">Merch</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/booking (1).png" alt="Booking Icon" />
-      <span><a href="#booking">Booking</a></span>
-    </div>
-    <div class="desktop-icon">
-      <img src="win95_icons/videos (1).png" alt="Videos Icon" />
-      <span><a href="#videos">Videos</a></span>
-    </div>
-  </div>
 
   <!-- Windows for each section -->
   <div class="section-windows">
