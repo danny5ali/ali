@@ -189,37 +189,39 @@
   </div>
 
   <!-- Windows 98 Style Audio Player (Floating) -->
-  <div class="win98-media-player">
-    <div class="media-controls">
-      <button onclick="rewind()">⏪</button>
-      <button onclick="togglePlay()">▶️/⏸️</button>
-      <button onclick="fastForward()">⏩</button>
-    </div>
-    <audio id="bg-audio" preload="auto" loop>
-      <source src="ali/win95_icons/JUMPIN.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+ <div class="win98-media-player">
+  <div class="media-controls">
+    <button onclick="rewind()">«</button>
+    <button onclick="togglePlay()" id="playPauseBtn">▶</button>
+    <button onclick="fastForward()">»</button>
   </div>
+  <audio id="bg-audio" preload="auto">
+    <source src="ali/win95_icons/JUMPIN.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+</div>
 
   <script>
-    const audio = document.getElementById("bg-audio");
-    let isPlaying = false;
+   const audio = document.getElementById("bg-audio");
+const playPauseBtn = document.getElementById("playPauseBtn");
 
-    function togglePlay() {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-      isPlaying = !isPlaying;
-    }
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.textContent = "⏸";
+  } else {
+    audio.pause();
+    playPauseBtn.textContent = "▶";
+  }
+}
 
-    function rewind() {
-      audio.currentTime = Math.max(0, audio.currentTime - 10);
-    }
+function rewind() {
+  audio.currentTime = Math.max(0, audio.currentTime - 5);
+}
 
-    function fastForward() {
-      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+function fastForward() {
+  audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+}
     }
   </script>
 </body>
