@@ -9,36 +9,36 @@
 </head>
 <body>
   <!-- 95-style Smartlink Popup -->
-<div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  background: #c0c0c0; border: 2px solid #000; box-shadow: 8px 8px #000;
-  width: 320px; max-width: 90%; z-index: 9999; font-family: 'Tahoma', sans-serif;">
-
-  <div class="title-bar">
-    <div class="title-bar-text">🔊 New Drop!</div>
-    <div class="title-bar-controls">
-      <button aria-label="Close" onclick="document.getElementById('smartlink-popup').style.display='none'"></button>
+  <div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: #c0c0c0; border: 2px solid #000; box-shadow: 8px 8px #000;
+    width: 320px; max-width: 90%; z-index: 9999; font-family: 'Tahoma', sans-serif;">
+    <div class="title-bar">
+      <div class="title-bar-text">🔊 New Drop!</div>
+      <div class="title-bar-controls">
+        <button aria-label="Close" onclick="document.getElementById('smartlink-popup').style.display='none'"></button>
+      </div>
+    </div>
+    <div class="window-body" style="padding: 12px;">
+      <p><strong>“JUMPIN' OUT THE HOUSE”</strong> DROPS JUNE 30.</p>
+      <a href="https://Venice.lnk.to/jumpin-out-the-house" target="_blank" class="btn-95">PRE-SAVE NOW</a>
     </div>
   </div>
 
-  <div class="window-body" style="padding: 12px;">
-    <p><strong>“JUMPIN' OUT THE HOUSE”</strong> DROPS JUNE 30.</p>
-    <a href="https://Venice.lnk.to/jumpin-out-the-house" target="_blank" class="btn-95">PRE-SAVE NOW</a>
-  </div>
-</div>
-
-<!-- Script to show popup once per session -->
-<script>
-  function closeSmartlinkPopup() {
-    document.getElementById('smartlink-popup').style.display = 'none';
-    sessionStorage.setItem('smartlink-popup-shown', 'true');
-  }
-
-  window.onload = function() {
-    if (!sessionStorage.getItem('smartlink-popup-shown')) {
-      document.getElementById('smartlink-popup').style.display = 'block';
+  <!-- Script to show popup once per session -->
+  <script>
+    function closeSmartlinkPopup() {
+      document.getElementById('smartlink-popup').style.display = 'none';
+      sessionStorage.setItem('smartlink-popup-shown', 'true');
     }
-  };
-</script>
+
+    window.onload = function () {
+      if (!sessionStorage.getItem('smartlink-popup-shown')) {
+        setTimeout(() => {
+          document.getElementById('smartlink-popup').style.display = 'block';
+        }, 2000);
+      }
+    };
+  </script>
 
   <!-- Horizontal Taskbar of Icons -->
   <div class="desktop-bar">
@@ -66,50 +66,52 @@
 
   <!-- Windows for each section -->
   <div class="section-windows">
-    <!-- New Music Smartlink Section (Windows 98 style) -->
-<section style="background: #008080; padding: 40px 20px; text-align: center; color: #000;">
-  <div style="max-width: 500px; margin: 0 auto; background: #fff; border: 2px solid #000; box-shadow: 4px 4px #000; padding: 20px; font-family: 'Tahoma', sans-serif;">
-    
-    <h2 style="font-size: 20px; margin-bottom: 10px;">PRE-SAVE 'JUMPIN' OUT THE HOUSE' NOW</h2>
-    
-    <img src="win95_icons/JUMPIN.png" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
-    
-    <div style="margin-bottom: 20px; color: #000;">Choose your platform:</div>
-    
-    <a href="https://venice.lnk.to/jumpin-out-the-house" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">SPOTIFY</a>
-    
-    <a href="https://venice.lnk.to/jumpin-out-the-house" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">APPLE MUSIC</a>
-    
-    <a href="https://venice.lnk.to/jumpin-out-the-house" style="display: block; background: #fff; border: 2px solid #000; color: #000; text-decoration: none; padding: 10px; margin: 10px auto; width: 200px; font-size: 14px; box-shadow: 2px 2px #000;">YOUTUBE</a>
-  </div>
-</section>
+    <!-- New Music Smartlink Section -->
+    <section style="background: #008080; padding: 40px 20px; text-align: center; color: #000;">
+      <div style="max-width: 500px; margin: 0 auto; background: #fff; border: 2px solid #000; box-shadow: 4px 4px #000; padding: 20px; font-family: 'Tahoma', sans-serif;">
+        <h2 style="font-size: 20px; margin-bottom: 10px;">PRE-SAVE 'JUMPIN' OUT THE HOUSE' NOW</h2>
+        <img src="win95_icons/JUMPIN.png" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
+        <div style="margin-bottom: 20px; color: #000;">Choose your platform:</div>
+        <a href="https://venice.lnk.to/jumpin-out-the-house" class="btn-95" target="_blank">SPOTIFY</a>
+        <a href="https://venice.lnk.to/jumpin-out-the-house" class="btn-95" target="_blank">APPLE MUSIC</a>
+        <a href="https://venice.lnk.to/jumpin-out-the-house" class="btn-95" target="_blank">YOUTUBE</a>
+      </div>
+    </section>
 
-    <!-- Upcoming Events -->
-    <div class="window-body">
-  <style>
-    .bit-widget-wrapper {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-  </style>
-  <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
-  <div class="bit-widget-wrapper">
-    <a
-      class="bit-widget-initializer"
-      data-artist-name="id_14219875"
-      data-background-color="rgba(240,240,240,1)"
-      data-separator-color="rgba(200,200,200,1)"
-      data-text-color="rgba(32,32,32,1)"
-      data-font="Tahoma"
-      data-auto-style="true"
-      data-date-format="MMM. D, YYYY"
-      data-date-orientation="horizontal"
-      data-event-ticket-text="TICKETS"
-      data-event-rsvp-text="RSVP"
-    ></a>
-  </div>
-</div>
-
+    <!-- Events -->
+    <div class="window" id="events">
+      <div class="title-bar">
+        <div class="title-bar-text">📅 Events</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <style>
+          .bit-widget-wrapper {
+            max-height: 300px;
+            overflow-y: auto;
+          }
+        </style>
+        <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+        <div class="bit-widget-wrapper">
+          <a class="bit-widget-initializer"
+            data-artist-name="id_14219875"
+            data-background-color="rgba(240,240,240,1)"
+            data-separator-color="rgba(200,200,200,1)"
+            data-text-color="rgba(32,32,32,1)"
+            data-font="Tahoma"
+            data-auto-style="true"
+            data-date-format="MMM. D, YYYY"
+            data-date-orientation="horizontal"
+            data-event-ticket-text="TICKETS"
+            data-event-rsvp-text="RSVP">
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Merch -->
     <div class="window" id="merch">
@@ -122,14 +124,9 @@
         </div>
       </div>
       <div class="window-body">
-        <img
-          src="https://stripe-camo.global.ssl.fastly.net/b2ae99081b6cbef79be59973100b0abac16cd6bbf5a7272d5c43694827625ac8/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a64463878546c706d53444248596a566e596a5a5a65554a4b66475a7358327870646d5666646b354c4d314e6159586c7263466331544531744d31644a65566f786446566d30307a356d3973364b78/6d65726368616e745f69643d616363745f314e5a6648304762356762365979424a26636c69656e743d5041594d454e545f50414745"
-          alt="Merch"
-          class="merch-art"
-        />
-        <a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank" class="btn-95">
-          Visit Store
-        </a>
+        <img src="https://stripe-camo.global.ssl.fastly.net/b2ae99081b6cbef79be59973100b0abac16cd6bbf5a7272d5c43694827625ac8/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a64463878546c706d53444248596a566e596a5a5a65554a4b66475a7358327870646d5666646b354c4d314e6159586c7263466331544531744d31644a65566f786446566d30307a356d3973364b78/6d65726368616e745f69643d616363745f314e5a6648304762356762365979424a26636c69656e743d5041594d454e545f50414745"
+          alt="Merch" class="merch-art" />
+        <a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank" class="btn-95">Visit Store</a>
       </div>
     </div>
 
@@ -144,37 +141,36 @@
         </div>
       </div>
       <div class="window-body">
-        <a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank" class="btn-95">
-          Book Danny Ali
-        </a>
+        <a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank" class="btn-95">Book Danny Ali</a>
       </div>
     </div>
-    <!-- Stream -->
-<div class="window" id="twitch">
-  <div class="title-bar">
-    <div class="title-bar-text">📺 Live on Twitch</div>
-    <div class="title-bar-controls">
-      <button aria-label="Minimize"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close"></button>
+
+    <!-- Twitch -->
+    <div class="window" id="twitch">
+      <div class="title-bar">
+        <div class="title-bar-text">📺 Live on Twitch</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <div class="twitch-wrapper">
+          <iframe
+            src="https://player.twitch.tv/?channel=1dannyali&parent=dannyali.com"
+            height="300"
+            width="100%"
+            frameborder="0"
+            allowfullscreen="true"
+            scrolling="no"
+          ></iframe>
+          <p style="margin-top: 8px;">
+            <a href="https://twitch.tv/1dannyali" target="_blank" class="btn-95">Watch on Twitch</a>
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="window-body">
-    <div class="twitch-wrapper">
-      <iframe
-        src="https://player.twitch.tv/?channel=1dannyali&parent=yourdomain.com"
-        height="300"
-        width="100%"
-        frameborder="0"
-        allowfullscreen="true"
-        scrolling="no"
-      ></iframe>
-      <p style="margin-top: 8px;">
-        <a href="https://twitch.tv/1dannyali" target="_blank" class="btn-95">Watch on Twitch</a>
-      </p>
-    </div>
-  </div>
-</div>
 
     <!-- Videos -->
     <div class="window" id="videos">
@@ -187,33 +183,44 @@
         </div>
       </div>
       <div class="window-body">
-        <iframe
-          src="https://www.youtube.com/embed/3f4sWmZEUDk"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <iframe src="https://www.youtube.com/embed/3f4sWmZEUDk" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
-  <script>
-  window.onload = function() {
-    setTimeout(() => {
-      document.getElementById('smartlink-popup').style.display = 'block';
-    }, 2000); // show popup after 2 seconds
-  };
-</script>
 
+  <!-- Windows 98 Style Audio Player (Floating) -->
   <div class="win98-media-player">
-  <div class="media-controls">
-    <button onclick="rewind()">⏪</button>
-    <button onclick="togglePlay()">▶️/⏸️</button>
-    <button onclick="fastForward()">⏩</button>
+    <div class="media-controls">
+      <button onclick="rewind()">⏪</button>
+      <button onclick="togglePlay()">▶️/⏸️</button>
+      <button onclick="fastForward()">⏩</button>
+    </div>
+    <audio id="bg-audio" preload="auto" loop>
+      <source src="ali/win95_icons/JUMPIN.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
   </div>
-  <audio id="bg-audio" preload="auto">
-    <source src="music/your-song.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
 
+  <script>
+    const audio = document.getElementById("bg-audio");
+    let isPlaying = false;
+
+    function togglePlay() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function rewind() {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    }
+
+    function fastForward() {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    }
+  </script>
 </body>
 </html>
