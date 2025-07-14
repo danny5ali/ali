@@ -5,53 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Danny Ali.exe</title>
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
 
-<!-- THE TEAM Exclusive Drop Section -->
-<section id="the-team-drop" style="background: #008080; color: white; padding: 40px 16px; font-family: 'Tahoma', sans-serif; text-align: center;">
-  <h2 style="margin-bottom: 10px; font-size: 22px;">THE TEAM: EXCLUSIVE DROP</h2>
-  <p style="max-width: 520px; margin: 0 auto 30px; font-size: 14px;">
-    Enter your email to access an exclusive look at 'THE TEAM'<br>
-  </p>
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      animation: flicker 1.2s infinite alternate;
+    }
 
-  <div style="display: flex; justify-content: center;">
-    <div style="
+    p {
+      font-size: 14px;
+      margin-bottom: 30px;
+      max-width: 500px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .glitch {
+      color: #fff;
+      text-shadow: 1px 1px 0 #ff0040, -1px -1px 0 #00fff9;
+      letter-spacing: 0.5px;
+    }
+
+    .access-box {
       background: #c0c0c0;
       border: 2px solid #000;
       box-shadow: 6px 6px #000;
-      padding: 8px;
+      padding: 10px;
       width: 100%;
       max-width: 520px;
       box-sizing: border-box;
-    ">
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe 
-        src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff" 
-        class="beehiiv-embed" 
-        data-test-id="beehiiv-embed" 
-        frameborder="0" 
-        scrolling="no" 
-        style="
-          width: 100%;
-          max-width: 100%;
-          height: 415px;
-          border: none;
-          background-color: transparent;
-          display: block;
-        ">
-      </iframe>
-    </div>
-  </div>
+    }
 
-  <style>
+    iframe {
+      width: 100%;
+      height: 415px;
+      border: none;
+      background-color: transparent;
+      display: block;
+    }
+
+    @keyframes flicker {
+      from { opacity: 1; }
+      to { opacity: 0.85; }
+    }
+
     @media (max-width: 500px) {
-      #the-team-drop iframe {
+      iframe {
         height: 380px !important;
+      }
+
+      h1 {
+        font-size: 20px;
       }
     }
   </style>
-</section>
+</head>
+<body>
+
+  <h1 class="glitch">THE TEAM: EXCLUSIVE DROP</h1>
+  <p>Enter your email to access an exclusive look at <strong>'THE TEAM'</strong> — a transmission from the ALIWORLD sequence.<br>IT ALREADY STARTED.</p>
+
+  <div class="access-box">
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <iframe 
+      src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff" 
+      class="beehiiv-embed" 
+      data-test-id="beehiiv-embed" 
+      frameborder="0" 
+      scrolling="no">
+    </iframe>
+  </div>
+
 </body>
 </html>
