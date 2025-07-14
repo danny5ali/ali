@@ -3,39 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>THE TEAM - Watch</title>
+  <title>THE TEAM.mp4</title>
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
   <style>
     body {
-      font-family: 'Tahoma', sans-serif;
       background: #008080;
       color: black;
-      padding: 40px 20px;
+      font-family: 'Tahoma', sans-serif;
+      padding: 40px 16px;
       text-align: center;
     }
-    .video-wrapper {
-      max-width: 640px;
-      margin: 30px auto;
-      box-shadow: 4px 4px #000;
-      border: 2px solid #000;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
     }
+
+    .subheading {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .video-frame {
+      border: 2px solid #000;
+      box-shadow: 6px 6px #000;
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 360px;
+    }
+
     .btn-95 {
       display: inline-block;
-      padding: 10px 16px;
       background: #000080;
       color: white;
-      border: 2px solid black;
+      border: 2px solid #000;
+      padding: 10px 20px;
       text-decoration: none;
-      margin-top: 20px;
+      font-size: 14px;
+      box-shadow: 4px 4px #000;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      iframe {
+        height: 220px;
+      }
+
+      .btn-95 {
+        font-size: 13px;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>FILE #001 — THE TEAM.mp4</h1>
-  <p>NOW WATCHING: the exclusive 'THE TEAM' drop. <br>Want the full track download? Support for $1 below.</p>
+  <h1>#001 — THE TEAM.mp4</h1>
+  <p class="subheading">NOW WATCHING: the exclusive 'THE TEAM' drop.<br>Want the full track download? Support for $1 below.</p>
 
-  <div class="video-wrapper">
-    <iframe width="100%" height="360" src="https://www.youtube.com/embed/UmAl6jpZUjE" frameborder="0" allowfullscreen></iframe>
+  <div class="video-frame">
+    <iframe 
+      src="https://www.youtube.com/embed/UmAl6jpZUjE" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
   </div>
 
   <a href="https://buy.stripe.com/eVq7sLackeTG7KRcpj4ZG0k" target="_blank" class="btn-95">💾 UNLOCK DOWNLOAD FOR $1</a>
