@@ -8,37 +8,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 95-style Smartlink Popup -->
-  <div id="smartlink-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: #c0c0c0; border: 2px solid #000; box-shadow: 8px 8px #000;
-    width: 320px; max-width: 90%; z-index: 9999; font-family: 'Tahoma', sans-serif;">
-    <div class="title-bar">
-      <div class="title-bar-text">🔊 New Drop!</div>
-      <div class="title-bar-controls">
-        <button aria-label="Close" onclick="document.getElementById('smartlink-popup').style.display='none'"></button>
-      </div>
-    </div>
-    <div class="window-body" style="padding: 12px;">
-      <p><strong>“JUMPIN' OUT THE HOUSE”</strong> OUT NOW.</p>
-      <a href="https://Venice.lnk.to/jumpin-out-the-house" target="_blank" class="btn-95">STREAM NOW</a>
-    </div>
-  </div>
 
-  <!-- Script to show popup once per session -->
-  <script>
-    function closeSmartlinkPopup() {
-      document.getElementById('smartlink-popup').style.display = 'none';
-      sessionStorage.setItem('smartlink-popup-shown', 'true');
-    }
+  <!-- THE TEAM Exclusive Drop Section -->
+  <section id="the-team-drop" style="background: #000080; color: white; padding: 40px 20px; font-family: 'Tahoma', sans-serif; text-align: center;">
+    <h2 style="margin-bottom: 12px;">🌀 THE TEAM: EXCLUSIVE DROP</h2>
+    <p style="max-width: 500px; margin: 0 auto 30px; font-size: 15px;">
+      Enter your email to access a private stream of the unreleased video.  
+      <br />Want the full download? You’ll be able to unlock it for $1 after.
+    </p>
 
-    window.onload = function () {
-      if (!sessionStorage.getItem('smartlink-popup-shown')) {
-        setTimeout(() => {
-          document.getElementById('smartlink-popup').style.display = 'block';
-        }, 2000);
-      }
-    };
-  </script>
+    <!-- Beehiiv Embed Form -->
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <iframe 
+      src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff" 
+      class="beehiiv-embed" 
+      data-test-id="beehiiv-embed" 
+      frameborder="0" 
+      scrolling="no" 
+      style="width: 500px; height: 415px; margin: 0 auto; border-radius: 0; background-color: transparent; box-shadow: none; max-width: 100%;">
+    </iframe>
+  </section>
+
+  <!-- Divider -->
+  <hr style="border: none; border-top: 4px double #000; margin: 40px auto;" />
 
   <!-- Horizontal Taskbar of Icons -->
   <div class="desktop-bar">
@@ -66,8 +58,9 @@
 
   <!-- Windows for each section -->
   <div class="section-windows">
+
     <!-- New Music Smartlink Section -->
-    <section style="background: #008080; padding: 40px 20px; text-align: center; color: #000;">
+    <section id="music" style="background: #008080; padding: 40px 20px; text-align: center; color: #000;">
       <div style="max-width: 500px; margin: 0 auto; background: #fff; border: 2px solid #000; box-shadow: 4px 4px #000; padding: 20px; font-family: 'Tahoma', sans-serif;">
         <h2 style="font-size: 20px; margin-bottom: 10px;">STREAM 'JUMPIN' OUT THE HOUSE' NOW</h2>
         <img src="win95_icons/JUMPIN.png" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
@@ -145,33 +138,6 @@
       </div>
     </div>
 
-    <!-- Twitch -->
-    <div class="window" id="twitch">
-      <div class="title-bar">
-        <div class="title-bar-text">📺 Live on Twitch</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div class="twitch-wrapper">
-          <iframe
-            src="https://player.twitch.tv/?channel=1dannyali&parent=dannyali.com"
-            height="300"
-            width="100%"
-            frameborder="0"
-            allowfullscreen="true"
-            scrolling="no"
-          ></iframe>
-          <p style="margin-top: 8px;">
-            <a href="https://twitch.tv/1dannyali" target="_blank" class="btn-95">Watch on Twitch</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
     <!-- Videos -->
     <div class="window" id="videos">
       <div class="title-bar">
@@ -187,42 +153,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Windows 98 Style Audio Player (Floating) -->
- <div class="win98-media-player">
-  <div class="media-controls">
-    <button onclick="rewind()">«</button>
-    <button onclick="togglePlay()" id="playPauseBtn">▶</button>
-    <button onclick="fastForward()">»</button>
-  </div>
-  <audio id="bg-audio" preload="auto">
-    <source src="win95_icons/JUMPIN.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
-
-  <script>
-   const audio = document.getElementById("bg-audio");
-const playPauseBtn = document.getElementById("playPauseBtn");
-
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-    playPauseBtn.textContent = "⏸";
-  } else {
-    audio.pause();
-    playPauseBtn.textContent = "▶";
-  }
-}
-
-function rewind() {
-  audio.currentTime = Math.max(0, audio.currentTime - 5);
-}
-
-function fastForward() {
-  audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
-}
-    }
-  </script>
 </body>
 </html>
