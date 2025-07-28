@@ -1,88 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Danny Ali.exe</title>
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
-      overflow-x: hidden;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size: 14px;
-      margin-bottom: 32px;
-      max-width: 520px;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .access-box {
-      background: #c0c0c0;
-      border: 2px solid #000;
-      box-shadow: 6px 6px #000;
-      padding: 12px;
-      width: 100%;
-      max-width: 500px;
-      box-sizing: border-box;
-    }
-
-    iframe {
-      width: 100%;
-      max-width: 100%;
-      height: 415px;
-      border: none;
-      background-color: transparent;
-      display: block;
-    }
-
-    @media (max-width: 500px) {
-      iframe {
-        height: 380px !important;
-      }
-
-      h1 {
-        font-size: 22px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Divider -->
+  <hr style="border: none; border-top: 4px double #000; margin: 40px auto;" />
 
-  <h1>THE TEAM: EXCLUSIVE DROP</h1>
-  <p>Enter your email to access an exclusive look at <strong>'THE TEAM'</strong> — a transmission from the ALIWORLD sequence.<br><br><br><br>IT ALREADY STARTED.</p>
-
-  <div class="access-box">
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe 
-      src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff" 
-      class="beehiiv-embed" 
-      data-test-id="beehiiv-embed" 
-      frameborder="0" 
-      scrolling="no">
-    </iframe>
+  <!-- Horizontal Taskbar of Icons -->
+  <div class="desktop-bar">
+    <div class="desktop-icon">
+      <img src="win95_icons/music (1).png" alt="Music Icon" />
+      <span><a href="#music">New Music</a></span>
+    </div>
+    <div class="desktop-icon">
+      <img src="win95_icons/events (1).png" alt="Events Icon" />
+      <span><a href="#events">Events</a></span>
+    </div>
+    <div class="desktop-icon">
+      <img src="win95_icons/merch (1).png" alt="Merch Icon" />
+      <span><a href="#merch">Merch</a></span>
+    </div>
+    <div class="desktop-icon">
+      <img src="win95_icons/booking (1).png" alt="Booking Icon" />
+      <span><a href="#booking">Booking</a></span>
+    </div>
+    <div class="desktop-icon">
+      <img src="win95_icons/videos (1).png" alt="Videos Icon" />
+      <span><a href="#videos">Videos</a></span>
+    </div>
   </div>
 
+  <!-- Windows for each section -->
+  <div class="section-windows">
+
+    <!-- New Music Smartlink Section -->
+    <section id="music" style="background: #008080; padding: 40px 20px; text-align: center; color: #000;">
+      <div style="max-width: 500px; margin: 0 auto; background: #fff; border: 2px solid #000; box-shadow: 4px 4px #000; padding: 20px; font-family: 'Tahoma', sans-serif;">
+        <h2 style="font-size: 20px; margin-bottom: 10px;">STREAM 'JUMPIN' OUT THE HOUSE' NOW</h2>
+        <img src="win95_icons/JUMPIN.png" alt="Album Cover" style="width: 100%; max-width: 300px; border: 2px solid #000; margin-bottom: 20px;" />
+        <div style="margin-bottom: 20px; color: #000;">Choose your platform:</div>
+        <a href="https://open.spotify.com/album/3DD8U6xZGRyGWOCitGBX2f?go=1" class="btn-95" target="_blank">SPOTIFY</a>
+        <a href="https://music.apple.com/us/album/jumpin-out-the-house-single/1822206966?at=1l3vpUI&ct=LFV_e1830b5dd28c77a111d2df5b4d3c55a9&itsct=catchall_p3&itscg=30440&ls=1" class="btn-95" target="_blank">APPLE MUSIC</a>
+        <a href="https://youtu.be/MUUio6Kp5lI" class="btn-95" target="_blank">YOUTUBE</a>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <div class="window" id="events">
+      <div class="title-bar">
+        <div class="title-bar-text">📅 Events</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <style>
+          .bit-widget-wrapper {
+            max-height: 300px;
+            overflow-y: auto;
+          }
+        </style>
+        <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+        <div class="bit-widget-wrapper">
+          <a class="bit-widget-initializer"
+            data-artist-name="id_14219875"
+            data-background-color="rgba(240,240,240,1)"
+            data-separator-color="rgba(200,200,200,1)"
+            data-text-color="rgba(32,32,32,1)"
+            data-font="Tahoma"
+            data-auto-style="true"
+            data-date-format="MMM. D, YYYY"
+            data-date-orientation="horizontal"
+            data-event-ticket-text="TICKETS"
+            data-event-rsvp-text="RSVP">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merch -->
+    <div class="window" id="merch">
+      <div class="title-bar">
+        <div class="title-bar-text">🛍️ Merch</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <img src="https://stripe-camo.global.ssl.fastly.net/b2ae99081b6cbef79be59973100b0abac16cd6bbf5a7272d5c43694827625ac8/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a64463878546c706d53444248596a566e596a5a5a65554a4b66475a7358327870646d5666646b354c4d314e6159586c7263466331544531744d31644a65566f786446566d30307a356d3973364b78/6d65726368616e745f69643d616363745f314e5a6648304762356762365979424a26636c69656e743d5041594d454e545f50414745"
+          alt="Merch" class="merch-art" />
+        <a href="https://buy.stripe.com/bIY3eMfhs2zibQs5kz?utm_source=hoobe&utm_medium=social" target="_blank" class="btn-95">Visit Store</a>
+      </div>
+    </div>
+
+    <!-- Booking -->
+    <div class="window" id="booking">
+      <div class="title-bar">
+        <div class="title-bar-text">📨 Booking</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <a href="https://forms.gle/Ue33SxfWCyrTPzgL6" target="_blank" class="btn-95">Book Danny Ali</a>
+      </div>
+    </div>
+
+    <!-- Videos -->
+    <div class="window" id="videos">
+      <div class="title-bar">
+        <div class="title-bar-text">📹 Videos</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <iframe src="https://www.youtube.com/embed/3f4sWmZEUDk" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
