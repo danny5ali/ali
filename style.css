@@ -1,61 +1,55 @@
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  background:#000; color:#fff;
+  font-family:'Montserrat', sans-serif;
+  height:100vh; display:flex;
+  align-items:center; justify-content:center;
+  text-align:center; padding:20px;
 }
 
-main {
-  max-width: 600px;
-  width: 100%;
-}
+main { max-width:600px; width:100%; }
 
-/* Headline Styling */
 .headline {
-  font-size: 32px;
-  letter-spacing: -0.08em;
-  font-weight: 900;
-  margin-bottom: 16px;
+  font-size:34px; letter-spacing:-0.08em;
+  font-weight:900; margin-bottom:20px;
 }
 
-/* Countdown Timer */
 .countdown-label {
-  font-size: 14px;
-  color: #f00;
-  margin-bottom: 8px;
-  letter-spacing: 2px;
+  font-size:13px; color:#ff0000;
+  margin-bottom:10px; letter-spacing:2px;
 }
 
 .countdown-timer {
-  font-size: 28px;
-  font-weight: bold;
-  color: #f00;
-  letter-spacing: 4px;
-  margin-bottom: 32px;
+  font-size:30px; font-weight:bold;
+  color:#ff0000; letter-spacing:4px;
+  margin-bottom:36px;
 }
 
-/* Form Wrapper */
-.form-wrapper {
-  display: flex;
-  justify-content: center;
+.custom-beehiiv-form {
+  display:flex; flex-direction:column;
+  gap:12px; margin-top:30px;
 }
 
-/* Footer Text */
+.custom-beehiiv-form input[type="email"] {
+  padding:12px; font-size:16px;
+  border:2px solid #ff0000;
+  color:#fff; background:#111;
+  letter-spacing:-0.08em;
+}
+
+.custom-beehiiv-form button {
+  padding:12px; font-size:16px;
+  font-weight:900; background:#ff0000;
+  color:#000; border:none; cursor:pointer;
+  letter-spacing:-0.08em;
+}
+
+.custom-beehiiv-form button:hover {
+  background:#fff; color:#ff0000; transition:0.2s;
+}
+
 .footer-text {
-  margin-top: 30px;
-  font-size: 12px;
-  color: #888;
-  font-style: italic;
+  margin-top:32px; font-size:12px;
+  color:#888; font-style:italic;
 }
