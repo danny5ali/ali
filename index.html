@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF‑8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>WORLD. // XX.XX.25</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
   <script>
-    // Countdown Logic
     document.addEventListener('DOMContentLoaded', () => {
       const countdown = document.getElementById('countdown');
-      const endDate = new Date("August 18, 2025 00:00:00").getTime();
-
+      const end = new Date("August 18, 2025 00:00:00").getTime();
       setInterval(() => {
-        const now = new Date().getTime();
-        const distance = endDate - now;
-
-        if (distance <= 0) {
-          countdown.innerHTML = "THE GATE IS OPEN.";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdown.innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
+        const diff = end - Date.now();
+        if (diff <= 0) return countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
+        const d = Math.floor(diff / 86400000),
+              h = Math.floor((diff % 86400000)/3600000),
+              m = Math.floor((diff%3600000)/60000),
+              s = Math.floor((diff%60000)/1000);
+        countdown.innerHTML = `${d}D ${h}H ${m}M ${s}S`;
       }, 1000);
     });
   </script>
 </head>
 <body>
   <main>
-    <p class="countdown-label">ACCESS UNLOCKS IN:</p>
+    <h1 class="headline">THE WORLD IS YOURS.</h1>
+    <p class="countdown-label">THE COUNTDOWN BEGINS</p>
     <div id="countdown" class="countdown-timer">--D --H --M --S</div>
 
-    <!-- Beehiiv Embed -->
-<form action="https://api.beehiiv.com/v1/subscribers" method="POST" class="custom-beehiiv-form">
-  <input type="email" name="email" placeholder="Enter your email..." required />
-  <input type="hidden" name="publication_id" value="1659e76e-f14e-42d9-aa7c-eed0fa5a3ea9E" />
-  <button type="submit">Join the Signal</button>
-</form>
+    <form action="subscribe.php" method="POST" class="custom-beehiiv-form">
+      <input type="email" name="email" placeholder="Enter your email..." required/>
+      <button type="submit">HEAR THE SIGNAL.</button>
+    </form>
 
-
-    <p class="footer-text">THE WORLD IS YOURS.</p>
+    <p class="footer-text">you felt it too, right?</p>
   </main>
 </body>
 </html>
