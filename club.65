@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>club.65 | Danny Ali</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.08em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: #ccc;
+    }
+
+    .access-button {
+      padding: 12px 28px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .access-button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .hint {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>club.65</h1>
+  <p>A hidden world of unreleased albums, bootleg movies, and forgotten frequencies. If you know, you know.</p>
+  <button class="access-button" onclick="location.href='mailto:club65@dannyali.com'">🔒 Request Access</button>
+  <div class="hint">By invite only.</div>
+</body>
+</html>
