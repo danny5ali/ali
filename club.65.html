@@ -1,65 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>club.65 | Danny Ali</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>CLUB.65</title>
+  <link rel="stylesheet" href="/style.css">
   <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: -0.08em;
+    .lock-screen {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
-      text-align: center;
+      background: #000;
+      color: gold;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.08em;
     }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-      color: #ccc;
-    }
-
-    .access-button {
-      padding: 12px 28px;
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-      font-size: 1rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .access-button:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .hint {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: #777;
+    input, button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
     }
   </style>
 </head>
 <body>
-  <h1>club.65</h1>
-  <p>a hidden world. some call it 'THE SIGNAL'.</p>
-  <button class="access-button" onclick="location.href='mailto:club65@dannyali.com'">🔒 get access</button>
-  <div class="hint">by invite only.</div>
+
+<div id="protected-content" style="display: none;">
+  <!-- Your actual CLUB.65 secret content goes here -->
+  <h1 style="color: gold;">CLUB.65</h1>
+  <p>by invite only.</p>
+</div>
+
+<div id="lock-screen" class="lock-screen">
+  <h2>CLUB.65: access required</h2>
+  <input type="password" id="password-input" placeholder="Enter access code" />
+  <button onclick="verifyPassword()">unlock</button>
+</div>
+
+<script>
+  const correctPassword = "AL1WORLD2025";
+
+  function unlock() {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('protected-content').style.display = 'block';
+  }
+
+  function verifyPassword() {
+    const input = document.getElementById('password-input').value;
+    if (input === correctPassword) {
+      unlock();
+    } else {
+      alert('Incorrect password.');
+    }
+  }
+
+  // Allow Stripe redirect to auto-unlock
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('access') === 'granted') {
+    unlock();
+  }
+</script>
+
 </body>
 </html>
