@@ -67,3 +67,29 @@ main { max-width:600px; width:100%; }
 .social-icons img:hover {
   transform: scale(1.15);
 }
+.vault-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 32px;
+}
+
+.vault-item {
+  background: #111;
+  border: 2px solid gold;
+  padding: 16px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.08em;
+}
+
+.vault-item img {
+  width: 100%;
+  border: 2px solid #444;
+}
+
+.vault-item h3 {
+  color: gold;
+  margin-top: 12px;
+}
+
