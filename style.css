@@ -1,18 +1,51 @@
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   background: #000;
-  color: #fff;
+  color: gold;
   font-family: 'Montserrat', sans-serif;
-  min-height: 100dvh; /* fixes height issues on iOS/Safari */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
-  padding-top: 80px;
+  align-items: center;
+  padding: 80px 16px 40px;
   text-align: center;
-  overflow-x: hidden;
 }
+
+.lock-screen,
+#protected-content {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+input,
+button {
+  margin-top: 1em;
+  padding: 0.75em 1em;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 600px) {
+  .vault-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
 main {
   width: 100%;
