@@ -48,18 +48,29 @@
   <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
 
     <!-- Secret Album -->
-    <div class="vault-item" style="border: 2px solid gold; padding: 16px; background: #111;">
-      <img src="/win95_icons/5TH SENSE.png" alt="Secret Album Cover" style="width: 100%; border: 2px solid #444;" />
-      <h3 style="color: gold; margin-top: 10px;">5TH SENSE - MIXTAPE</h3>
-      <a href="/secret/album001.zip" download class="btn-95" style="margin-top: 8px;">Download</a>
-    </div>
+   <div class="player-container">
+  <h3>club.65 exclusive mixtape: "5TH SENSE"</h3>
+  <audio id="audio-player" controls style="width:100%;">
+    <source id="audio-source" src="/audio/track1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="controls-95">
+    <button onclick="prevTrack()">⏮</button>
+    <button onclick="togglePlay()">⏯</button>
+    <button onclick="nextTrack()">⏭</button>
+  </div>
+</div>
+
 
     <!-- Secret Film -->
-    <div class="vault-item" style="border: 2px solid gold; padding: 16px; background: #111;">
-      <img src="/win95_icons/secret_film.png" alt="Secret Film Poster" style="width: 100%; border: 2px solid #444;" />
-      <h3 style="color: gold; margin-top: 10px;">SHORT FILM: "THE DUFFLE"</h3>
-      <a href="https://vimeo.com/your-private-link" target="_blank" class="btn-95" style="margin-top: 8px;">Watch</a>
-    </div>
+   <div class="player-container">
+  <h3>short film: “THE DUFFLE”</h3>
+  <video width="100%" controls>
+    <source src="/videos/frequency.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 
   </div>
 </div>
@@ -119,6 +130,79 @@
     unlock();
   }
 </script>
+  <script>
+  const audioPlayer = document.getElementById('audio-player');
+  const audioSource = document.getElementById('audio-source');
+
+  const tracks = [
+    '/audio/track1.mp3',
+    '/audio/track2.mp3',
+    '/audio/track3.mp3'
+  ];
+
+  let currentTrack = 0;
+
+  function loadTrack(index) {
+    audioSource.src = tracks[index];
+    audioPlayer.load();
+    audioPlayer.play();
+  }
+
+  function togglePlay() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  }
+
+  function nextTrack() {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  function prevTrack() {
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrack);
+  }
+</script>
+<script>
+  const audioPlayer = document.getElementById('audio-player');
+  const audioSource = document.getElementById('audio-source');
+
+  const tracks = [
+    '/audio/track1.mp3',
+    '/audio/track2.mp3',
+    '/audio/track3.mp3'
+  ];
+
+  let currentTrack = 0;
+
+  function loadTrack(index) {
+    audioSource.src = tracks[index];
+    audioPlayer.load();
+    audioPlayer.play();
+  }
+
+  function togglePlay() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  }
+
+  function nextTrack() {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  function prevTrack() {
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrack);
+  }
+</script>
+
 
 </body>
 </html>
