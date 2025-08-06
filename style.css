@@ -17,6 +17,31 @@ body {
 
 
 main { max-width:600px; width:100%; }
+.club65-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.club65-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  text-decoration: none;
+  color: black;
+  background: gold;
+  padding: 10px 24px;
+  border: none;
+  box-shadow: 3px 3px black;
+  font-size: 0.85rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.club65-button:hover {
+  background: #fff200;
+}
 
 .headline {
   font-size:34px; letter-spacing:-0.08em;
@@ -104,30 +129,4 @@ main { max-width:600px; width:100%; }
 .back-home-wrapper {
   display: flex;
   justify-content: center;
-}
-
-.club65-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.club65-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.08em;
-  text-decoration: none;
-  color: black;
-  background: gold;
-  padding: 10px 24px;
-  border: none;
-  box-shadow: 3px 3px black;
-  font-size: 0.85rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.club65-button:hover {
-  background: #fff200;
 }
