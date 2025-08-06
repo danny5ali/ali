@@ -26,6 +26,10 @@ main { max-width:600px; width:100%; }
 }
 
 .club65-button {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   letter-spacing: -0.08em;
@@ -37,6 +41,7 @@ main { max-width:600px; width:100%; }
   box-shadow: 3px 3px black;
   font-size: 0.85rem;
   transition: all 0.2s ease-in-out;
+  z-index: 1000;
 }
 
 .club65-button:hover {
