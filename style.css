@@ -179,3 +179,41 @@ iframe {
   background: transparent;
 }
 
+.player-container {
+  background: #111;
+  border: 2px solid gold;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.player-container h3 {
+  color: gold;
+  margin-bottom: 12px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.08em;
+}
+
+.controls-95 {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.controls-95 button {
+  background: gold;
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  letter-spacing: -0.08em;
+  transition: 0.2s;
+}
+
+.controls-95 button:hover {
+  background: #fff200;
+}
