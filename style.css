@@ -14,7 +14,18 @@ body {
   overflow-x: hidden;
 }
 
-main { max-width:600px; width:100%; }
+main {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
 
 .club65-button-container {
   position: fixed;
