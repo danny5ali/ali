@@ -7,6 +7,32 @@ body {
   align-items:center; justify-content:center;
   text-align:center; padding:20px;
 }
+.club65-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+  background: #000;
+}
+
+.club65-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: -0.08em;
+  padding: 8px 20px;
+  background: gold;
+  color: #000;
+  border: 2px solid #000;
+  text-decoration: none;
+  box-shadow: 3px 3px #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.club65-button:hover {
+  background: #fff;
+  color: #000;
+}
 
 main { max-width:600px; width:100%; }
 
