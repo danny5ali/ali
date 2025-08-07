@@ -344,22 +344,29 @@ iframe {
 }
 
 .chat-reactions {
-  margin-top: 4px;
   display: flex;
-  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .reaction-button {
-  font-size: 12px;
-  line-height: 1;
-  padding: 2px;
-  background: transparent;
+  background: none;
   border: none;
+  font-size: 14px;
+  line-height: 1;
   color: gold;
   cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
 }
+
 
 .reaction-button:hover {
   opacity: 1;
@@ -367,8 +374,9 @@ iframe {
 }
 
 .reaction-button.reacted {
-  opacity: 1;
   color: #fff;
+  opacity: 1;
+  font-weight: bold;
 }
 
 /* Responsive Adjustments */
