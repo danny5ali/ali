@@ -25,20 +25,21 @@ body {
 }
 
 input,
-button {
+button,
+input:focus,
+button:focus {
   margin-top: 1em;
   padding: 0.75em 1em;
   font-size: 1rem;
   width: 100%;
   max-width: 300px;
+  color: black;
+  background: gold;
+  border: none;
+  outline: none;
+  appearance: none;
+  font-weight: 900;
 }
-
-@media (min-width: 600px) {
-  .vault-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 
 main {
   width: 100%;
@@ -51,7 +52,6 @@ main {
   justify-content: center;
   padding: 0 16px;
 }
-
 
 .club65-button-container {
   position: fixed;
@@ -82,43 +82,60 @@ main {
 }
 
 .countdown-label {
-  font-size:13px; color:#ff0000;
-  margin-bottom:10px; letter-spacing:2px;
+  font-size: 13px;
+  color: #ff0000;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
 }
 
 .countdown-timer {
-  font-size:30px; font-weight:bold;
-  color:#ff0000; letter-spacing:4px;
-  margin-bottom:36px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ff0000;
+  letter-spacing: 4px;
+  margin-bottom: 36px;
 }
 
 .custom-beehiiv-form {
-  display:flex; flex-direction:column;
-  gap:12px; margin-top:30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .custom-beehiiv-form input[type="email"] {
-  padding:12px; font-size:16px;
-  border:2px solid #ff0000;
-  color:#fff; background:#111;
-  letter-spacing:-0.08em;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ff0000;
+  color: #fff;
+  background: #111;
+  letter-spacing: -0.08em;
 }
 
 .custom-beehiiv-form button {
-  padding:12px; font-size:16px;
-  font-weight:900; background:#ff0000;
-  color:#000; border:none; cursor:pointer;
-  letter-spacing:-0.08em;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 900;
+  background: #ff0000;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.08em;
 }
 
 .custom-beehiiv-form button:hover {
-  background:#fff; color:#ff0000; transition:0.2s;
+  background: #fff;
+  color: #ff0000;
+  transition: 0.2s;
 }
 
 .footer-text {
-  margin-top:32px; font-size:12px;
-  color:#888; font-style:italic;
+  margin-top: 32px;
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
 }
+
 .social-icons {
   margin-top: 30px;
 }
@@ -133,6 +150,7 @@ main {
 .social-icons img:hover {
   transform: scale(1.15);
 }
+
 .vault-grid {
   display: grid;
   gap: 24px;
@@ -167,7 +185,7 @@ main {
 iframe {
   width: 100%;
   max-width: 100%;
-  height: 366px; /* override if needed */
+  height: 366px;
   border: none;
   background: transparent;
 }
@@ -210,78 +228,8 @@ iframe {
 .controls-95 button:hover {
   background: #fff200;
 }
-#chat-box {
-  background: #000;
-  color: gold;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.4;
-  border: 2px solid gold;
-  box-shadow: 4px 4px #000;
-  padding: 1em;
-  height: 300px;
-  overflow-y: auto;
-}
 
-.chat-message {
-  background: #111;
-  border: 2px solid gold;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  border-radius: 0; /* Reset any inherited curves */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.chat-message.you {
-  background: #1a1a1a;
-  border-left: 3px solid lime;
-}
-
-.chat-message.system {
-  background: #111;
-  color: #999;
-  border-left: 3px dashed gold;
-  font-style: italic;
-}
-.chat-meta {
-  display: flex;
-  flex-direction: column; /* Stack alias and time vertically on mobile */
-  align-items: flex-start;
-  margin-bottom: 6px;
-}
-
-.chat-alias {
-  font-weight: bold;
-  color: gold;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  margin-bottom: 2px;
-}
-
-.chat-timestamp {
-  font-size: 0.75rem;
-  color: gray;
-  font-family: 'Courier New', monospace;
-  line-height: 1.4;
-}
-
-.chat-text {
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: gold;
-}
-@media (max-width: 480px) {
-  .chat-message {
-    padding: 12px;
-  }
-
-  .chat-meta {
-    flex-direction: column;
-    align-items: flex-start;
-
+/* CHAT */
 #chat-container {
   width: 100%;
   max-width: 600px;
@@ -342,74 +290,101 @@ iframe {
   cursor: pointer;
   white-space: nowrap;
 }
-    input,
-button,
-input:focus,
-button:focus {
-  color: black;
-  background: gold;
-  border: none;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  font-weight: 900;
-}
-    .chat-reactions {
-  margin-top: 6px;
-  display: flex;
-  gap: 8px;
-}
 
-.reaction {
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: transform 0.1s ease-in-out;
-}
-
-.reaction:hover {
-  transform: scale(1.2);
-}
-    .chat-reactions {
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.reaction-button {
+/* Chat Message Styling */
+.chat-message {
   background: #111;
-  color: gold;
-  border: 1px solid gold;
-  font-size: 0.85rem;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-family: 'Courier New', monospace;
+  border: 2px solid gold;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.reaction-button.reacted {
-  border-color: lime;
-  font-weight: bold;
-  background: #222;
+.chat-message.you {
+  background: #1a1a1a;
+  border-left: 3px solid lime;
 }
+
+.chat-message.system {
+  background: #111;
+  color: #999;
+  border-left: 3px dashed gold;
+  font-style: italic;
+}
+
+.chat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.chat-alias {
+  font-weight: bold;
+  color: gold;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.chat-timestamp {
+  font-size: 0.75rem;
+  color: gray;
+  font-family: 'Courier New', monospace;
+  line-height: 1.4;
+}
+
+.chat-text {
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: gold;
+}
+
+.chat-reactions {
+  margin-top: 4px;
+  display: flex;
+  gap: 4px;
+}
+
 .reaction-button {
-  font-size: 0.6rem;
-  padding: 2px 4px;
-  margin-right: 4px;
-  border: none;
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px;
   background: transparent;
+  border: none;
   color: gold;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
 }
 
 .reaction-button:hover {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .reaction-button.reacted {
-  font-weight: bold;
+  opacity: 1;
   color: #fff;
 }
+
+/* Responsive Adjustments */
+@media (min-width: 600px) {
+  .vault-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+@media (max-width: 480px) {
+  .chat-message {
+    padding: 12px;
+  }
+
+  .chat-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
