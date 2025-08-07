@@ -87,6 +87,21 @@
       color: #888;
       font-style: italic;
     }
+    .centered-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.centered-content {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -105,32 +120,33 @@
   </script>
 </head>
 <body>
-
   <div class="club65-button-container">
     <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
   </div>
 
-  <main>
-    <h1 class="headline">THE WORLD IS YOURS.</h1>
-    <p class="countdown-label">THE COUNTDOWN BEGINS</p>
-    <div id="countdown" class="countdown-timer">--D --H --M --S</div>
+  <main class="centered-container">
+    <div class="centered-content">
+      <h1 class="headline">THE WORLD IS YOURS.</h1>
+      <p class="countdown-label">THE COUNTDOWN BEGINS</p>
+      <div id="countdown" class="countdown-timer">--D --H --M --S</div>
 
-    <!-- Beehiiv Embed -->
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe
-      src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
-      class="beehiiv-embed"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
+      <!-- Beehiiv Embed -->
+      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+      <iframe
+        src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
+        class="beehiiv-embed"
+        frameborder="0"
+        scrolling="no">
+      </iframe>
 
-    <div class="social-icons">
-      <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
-      </a>
+      <div class="social-icons">
+        <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
+        </a>
+      </div>
+
+      <p class="footer-text">you felt it too, right?</p>
     </div>
-
-    <p class="footer-text">you felt it too, right?</p>
   </main>
 </body>
 </html>
