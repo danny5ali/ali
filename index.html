@@ -1,130 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WORLD. // XX.XX.25</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       background: #000;
-      color: #fff;
+      color: gold;
       font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      padding: 60px 16px 40px;
     }
 
     .club65-button-container {
-      position: fixed;
+      position: absolute;
       top: 20px;
-      left: 0;
-      right: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
-      z-index: 1000;
+      z-index: 10;
     }
 
     .club65-button {
       background: gold;
       color: black;
+      padding: 10px 24px;
       font-weight: 900;
       text-decoration: none;
-      padding: 10px 20px;
-      box-shadow: 3px 3px #000;
+      box-shadow: 3px 3px black;
       letter-spacing: -0.08em;
-      font-size: 0.85rem;
+    }
+
+    main {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .centered-content {
+      max-width: 480px;
+      width: 100%;
     }
 
     .headline {
       font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      color: gold;
     }
 
     .countdown-label {
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      font-size: 14px;
       color: white;
-      margin-bottom: 8px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
 
     .countdown-timer {
-      font-size: 2rem;
+      font-size: 32px;
       font-weight: bold;
       color: white;
-      margin-bottom: 32px;
+      letter-spacing: 4px;
+      margin-bottom: 36px;
     }
 
-    iframe.beehiiv-embed {
+    .beehiiv-embed {
       width: 100%;
-      max-width: 480px;
-      height: 240px;
-      border: none;
+      height: 250px;
       background: transparent;
-      margin: 0 auto 40px;
-      display: block;
+      border: none;
+      margin-bottom: 24px;
+    }
+
+    .footer-text {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #aaa;
+      font-style: italic;
     }
 
     .social-icons {
-      margin-bottom: 30px;
+      margin-top: 20px;
     }
 
     .social-icons img {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       filter: brightness(0) invert(1);
       transition: transform 0.2s ease;
     }
 
     .social-icons img:hover {
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
-
-    .footer-text {
-      font-size: 0.85rem;
-      color: #888;
-      font-style: italic;
-    }
-    .centered-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 16px;
-}
-
-.centered-content {
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
   </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const countdown = document.getElementById('countdown');
       const end = new Date("August 18, 2025 00:00:00").getTime();
       setInterval(() => {
         const diff = end - Date.now();
-        if (diff <= 0) return countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
+        if (diff <= 0) {
+          countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
+          return;
+        }
         const d = Math.floor(diff / 86400000),
-              h = Math.floor((diff % 86400000)/3600000),
-              m = Math.floor((diff%3600000)/60000),
-              s = Math.floor((diff%60000)/1000);
+              h = Math.floor((diff % 86400000) / 3600000),
+              m = Math.floor((diff % 3600000) / 60000),
+              s = Math.floor((diff % 60000) / 1000);
         countdown.innerHTML = `${d}D ${h}H ${m}M ${s}S`;
       }, 1000);
     });
   </script>
 </head>
+
 <body>
   <div class="club65-button-container">
     <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
   </div>
 
-  <main class="centered-container">
+  <main>
     <div class="centered-content">
       <h1 class="headline">THE WORLD IS YOURS.</h1>
       <p class="countdown-label">THE COUNTDOWN BEGINS</p>
@@ -132,11 +137,10 @@
 
       <!-- Beehiiv Embed -->
       <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe
-        src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
-        class="beehiiv-embed"
-        frameborder="0"
-        scrolling="no">
+      <iframe src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
+              class="beehiiv-embed"
+              frameborder="0"
+              scrolling="no">
       </iframe>
 
       <div class="social-icons">
