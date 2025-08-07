@@ -53,21 +53,33 @@
   </div>
 
   <!-- Lock Screen -->
-  <div id="lock-screen" class="lock-screen">
-    <h2>CLUB.65: access required</h2>
-    <div style="max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; color: gold;">
-  <p><strong>CLUB.65</strong> is a private transmission line into ALIWORLD.</p>
-  <p>unreleased music.</p>
-  <p>secret visual streams.</p>
-  <p>a live community signal chat.</p>
-  <p>monthly entry, lifetime invite.</p>
-</div>
+<div id="lock-screen" class="lock-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 24px; background: #000; color: #FFD700; font-family: 'Montserrat', sans-serif; text-align: center;">
+  <h2 style="font-size: 1.75rem; margin-bottom: 16px;">CLUB.65: access required</h2>
 
-<!-- Primary CTA: brighter yellow with black text -->
-<a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
-   style="display:block; margin-top:32px; padding:10px 42px; background:#FFD700; color:#000; text-decoration:none; font-family:'Montserrat'; font-weight:900; box-shadow:3px 3px #000;">
-  GET ACCESS &rarr;
-</a>
+  <div style="max-width: 480px; font-size: 0.95rem; line-height: 1.8; color: white;">
+    <p><strong style="color: #FFD700;">CLUB.65</strong> is a private transmission line into <span style="font-weight: bold;">ALIWORLD</span>.</p>
+    <p>unreleased music</p>
+    <p>secret visual streams</p>
+    <p>live community signal chat</p>
+    <p>monthly entry, lifetime invite</p>
+  </div>
+
+  <!-- GET ACCESS Button -->
+  <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
+     style="display: block; margin-top: 32px; padding: 12px 24px; background: #FFD700; color: #000; font-weight: 900; font-family: 'Montserrat', sans-serif; text-decoration: none; box-shadow: 3px 3px #000;">
+    GET ACCESS &rarr;
+  </a>
+
+  <!-- Passcode Section -->
+  <div style="margin-top: 40px; width: 100%; max-width: 300px;">
+    <input type="password" id="password-input" placeholder="enter access code"
+           style="width: 100%; padding: 12px; font-size: 1rem; background: #444; color: #ddd; border: 2px solid #FFD700; font-family: 'Courier New', monospace; text-align: center;" />
+    <button id="unlock-btn"
+            style="margin-top: 12px; padding: 12px; width: 100%; font-size: 1rem; background: #333; color: #ddd; font-weight: 900; font-family: 'Montserrat', sans-serif; border: 2px solid #FFD700; box-shadow: 2px 2px #000;">
+      unlock with passcode.
+    </button>
+  </div>
+</div>
 
 <!-- Separated passcode section -->
 <div style="margin-top: 24px;">
