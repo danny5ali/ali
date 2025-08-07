@@ -33,13 +33,6 @@ button {
   max-width: 300px;
 }
 
-.vault-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 32px;
-}
-
 @media (min-width: 600px) {
   .vault-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -231,10 +224,11 @@ iframe {
 }
 
 .chat-message {
-  margin-bottom: 10px;
-  padding: 6px 8px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
   background: #111;
   border-left: 3px solid gold;
+  border-radius: 4px;
 }
 
 .chat-message.you {
@@ -242,13 +236,31 @@ iframe {
   border-left: 3px solid lime;
 }
 
+.chat-message.system {
+  background: #111;
+  color: #999;
+  border-left: 3px dashed gold;
+  font-style: italic;
+}
 .chat-alias {
   font-weight: bold;
 }
+.chat-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-text {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
 
 .chat-timestamp {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: gray;
-  float: right;
-  margin-left: 10px;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  margin-top: 2px;
 }
