@@ -204,20 +204,20 @@
     });
 
     db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snap => {
-      chatBox.innerHTML = '';
-      snap.forEach(doc => {
-        const m = doc.data();
-        if (!m.deleted) {
-          const t = m.timestamp?.toDate().toLocaleTimeString() || '';
-          chatBox.innerHTML += `
-            <div style="margin-bottom: 16px; padding: 8px; background: #000; border: 1px solid gold; box-shadow: 2px 2px #000;">
-              <div style="color: gold; font-weight: bold;">${m.alias}</div>
-              <div style="margin-top: 4px;">${m.text}</div>
-              <div style="font-size: 0.7rem; color: gray; margin-top: 4px;">${t}</div>
-            </div>
-          `;
-        }
-      });
+     chatBox.innerHTML = '';
+snap.forEach(doc => {
+  const m = doc.data();
+  if (!m.deleted) {
+    const t = m.timestamp?.toDate().toLocaleTimeString() || '';
+    const isYou = m.alias === alias;
+    chatBox.innerHTML += `
+      <div class="chat-message ${isYou ? 'you' : ''}">
+        <span class="chat-alias">${m.alias}</span>
+        <span class="chat-timestamp">${t}</span><br>
+        ${m.text}
+      </div>`;
+  }
+});
       chatBox.scrollTop = chatBox.scrollHeight;
     });
   });
