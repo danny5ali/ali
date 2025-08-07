@@ -214,12 +214,29 @@ snap.forEach(doc => {
   if (!m.deleted) {
     const t = m.timestamp?.toDate().toLocaleTimeString() || '';
     const isYou = m.alias === alias;
-    chatBox.innerHTML += `
+    const reactionEmojis = ["🔥", "❤️", "👀"]; // You can customize this list
+const reactions = m.reactions || {};
+let reactionHTML = "";
+
+reactionEmojis.forEach(emoji => {
+  const users = reactions[emoji] || [];
+  const count = users.length;
+  const reacted = users.includes(alias);
+  reactionHTML += `
+    <button class="reaction-button ${reacted ? 'reacted' : ''}" 
+            data-id="${doc.id}" 
+            data-emoji="${emoji}">
+      ${emoji} ${count > 0 ? count : ""}
+    </button>`;
+});
+
+chatBox.innerHTML += `
   <div class="chat-message ${isYou ? 'you' : ''}">
     <div class="chat-meta">
       <span class="chat-alias">${m.alias}</span>
     </div>
     <div class="chat-text">${m.text}</div>
+    <div class="chat-reactions">${reactionHTML}</div>
     <div class="chat-timestamp">${t}</div>
   </div>`;
   }
