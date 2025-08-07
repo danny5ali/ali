@@ -97,115 +97,146 @@
 
   <!-- modular Firebase + logic -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-    import {
-      getFirestore, collection, addDoc, query, orderBy,
-      onSnapshot, serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import {
+    getFirestore, collection, addDoc, query, orderBy,
+    onSnapshot, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-    // config
-    const firebaseConfig = {
-      apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
-      authDomain: "club65signal.firebaseapp.com",
-      projectId: "club65signal",
-      storageBucket: "club65signal.firebasestorage.app",
-      messagingSenderId: "135479902138",
-      appId: "1:135479902138:web:1f7fa526d3e358924d6783",
-    };
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
+    authDomain: "club65signal.firebaseapp.com",
+    projectId: "club65signal",
+    storageBucket: "club65signal.firebasestorage.app",
+    messagingSenderId: "135479902138",
+    appId: "1:135479902138:web:1f7fa526d3e358924d6783",
+  };
 
-    // init
-    const app  = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
+  // Init Firebase
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
 
-    // audio
-    const tracks = [
-      { title: "WAIT4THIS", file: "/5TH SENSE/01 wait4this.mp3" },
-      { title: "SOLOW",     file: "/5TH SENSE/02 SOLOW.mp3" },
-      { title: "SO SICK",   file: "/5TH SENSE/03 SO SICK.mp3" },
-      { title: "THE DARK KNIGHT", file:"/5TH SENSE/04 THE DARK KNIGHT.mp3" },
-      { title: "LETMEGO",   file: "/5TH SENSE/05 LETMEGO.mp3" },
-      { title: "REAL BIG",  file: "/5TH SENSE/06 REAL BIG.m4a" }
-    ];
-    let currentTrack = 0;
-    const audioPlayer = document.getElementById("audio-player");
-    const trackTitle  = document.getElementById("track-title");
+  // Elements
+  const lockScreen       = document.getElementById("lock-screen");
+  const protectedContent = document.getElementById("protected-content");
+  const chatContainer    = document.getElementById("chat-container");
+  const unlockBtn        = document.getElementById("unlock-btn");
+  const passwordInput    = document.getElementById("password-input");
 
-    function loadTrack(i) {
-      audioPlayer.src = tracks[i].file;
-      trackTitle.textContent = `TRANSMITTING: ${tracks[i].title}`;
-      audioPlayer.load(); audioPlayer.play();
+  const correctPassword = "AL1WORLD2025";
+
+  unlockBtn.addEventListener("click", verifyPassword);
+  passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      verifyPassword();
     }
-    function togglePlay() {
-      if(!audioPlayer.src) loadTrack(currentTrack);
-      else audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
-    }
-    function nextTrack() { currentTrack=(currentTrack+1)%tracks.length; loadTrack(currentTrack); }
-    function prevTrack() { currentTrack=(currentTrack-1+tracks.length)%tracks.length; loadTrack(currentTrack); }
-    audioPlayer.addEventListener("ended", nextTrack);
+  });
 
-    // gating + chat
-    const correctPassword = "AL1WORLD2025";
-    document.getElementById("unlock-btn").onclick = verifyPassword;
-    document.getElementById("password-input").addEventListener("keydown", e => {
-      if(e.key==="Enter"){ e.preventDefault(); verifyPassword(); }
-    });
-    if(localStorage.getItem("club65_unlocked")==="true"
-       || new URLSearchParams(location.search).get("access")==="granted") {
+  // If user already unlocked
+  if (localStorage.getItem("club65_unlocked") === "true" || new URLSearchParams(location.search).get("access") === "granted") {
+    doUnlock();
+  }
+
+  function verifyPassword() {
+    const input = passwordInput.value.trim();
+    if (input === correctPassword) {
+      localStorage.setItem("club65_unlocked", "true");
       doUnlock();
+    } else {
+      alert("Incorrect password.");
+    }
+  }
+
+  function doUnlock() {
+    lockScreen.style.display = "none";
+    protectedContent.style.display = "block";
+    chatContainer.style.display = "block";
+
+    let alias = localStorage.getItem("club65_alias");
+    if (!alias) {
+      alias = prompt("enter your CLUB.65 alias ():") || "anon";
+      localStorage.setItem("club65_alias", alias);
     }
 
-    function verifyPassword(){
-      const val = document.getElementById("password-input").value;
-      if(val===correctPassword){
-        localStorage.setItem("club65_unlocked","true");
-        doUnlock();
-      } else alert("Incorrect password.");
-    }
+    signInAnonymously(auth).catch(console.error);
 
-    function doUnlock(){
-      document.getElementById("lock-screen").style.display       ="none";
-      document.getElementById("protected-content").style.display ="block";
-      document.getElementById("chat-container").style.display    ="block";
+    onAuthStateChanged(auth, (user) => {
+      if (!user) return;
 
-      let alias = localStorage.getItem("club65_alias");
-      if(!alias){
-        alias = prompt("enter your CLUB.65 alias ():")||"anon";
-        localStorage.setItem("club65_alias",alias);
-      }
-      signInAnonymously(auth).catch(console.error);
+      const chatBox = document.getElementById("chat-box");
+      const chatForm = document.getElementById("chat-form");
+      const input = document.getElementById("message-input");
 
-      onAuthStateChanged(auth,user=>{
-        if(!user) return;
-        const chatBox  = document.getElementById("chat-box");
-        const chatForm = document.getElementById("chat-form");
-        const input    = document.getElementById("message-input");
+      chatForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const txt = input.value.trim();
+        if (!txt) return;
 
-        chatForm.addEventListener("submit", async e=>{
-          e.preventDefault();
-          const txt = input.value.trim(); if(!txt) return;
-          await addDoc(collection(db,"messages"), {
-            alias, text:txt, timestamp:serverTimestamp()
-          });
-          input.value="";
+        await addDoc(collection(db, "messages"), {
+          alias,
+          text: txt,
+          timestamp: serverTimestamp()
         });
 
-        const q = query(collection(db,"messages"), orderBy("timestamp","asc"));
-        onSnapshot(q,snap=>{
-          chatBox.innerHTML="";
-          snap.forEach(doc=>{
-            const m = doc.data();
-            const t = m.timestamp?.toDate().toLocaleTimeString()||"";
-            chatBox.innerHTML +=
-              `<p><strong>${m.alias}:</strong> ${m.text}
-               <br><small style="color:gray">${t}</small></p>`;
-          });
-          chatBox.scrollTop = chatBox.scrollHeight;
-        });
+        input.value = "";
       });
-    }
-  </script>
+
+      const q = query(collection(db, "messages"), orderBy("timestamp", "asc"));
+      onSnapshot(q, (snap) => {
+        chatBox.innerHTML = "";
+        snap.forEach((doc) => {
+          const m = doc.data();
+          const t = m.timestamp?.toDate().toLocaleTimeString() || "";
+          chatBox.innerHTML += `<p><strong>${m.alias}:</strong> ${m.text}<br><small style="color:gray">${t}</small></p>`;
+        });
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+    });
+  }
+
+  // Audio player logic
+  const tracks = [
+    { title: "WAIT4THIS", file: "/5TH SENSE/01 wait4this.mp3" },
+    { title: "SOLOW",     file: "/5TH SENSE/02 SOLOW.mp3" },
+    { title: "SO SICK",   file: "/5TH SENSE/03 SO SICK.mp3" },
+    { title: "THE DARK KNIGHT", file: "/5TH SENSE/04 THE DARK KNIGHT.mp3" },
+    { title: "LETMEGO",   file: "/5TH SENSE/05 LETMEGO.mp3" },
+    { title: "REAL BIG",  file: "/5TH SENSE/06 REAL BIG.m4a" }
+  ];
+  let currentTrack = 0;
+  const audioPlayer = document.getElementById("audio-player");
+  const trackTitle  = document.getElementById("track-title");
+
+  function loadTrack(i) {
+    audioPlayer.src = tracks[i].file;
+    trackTitle.textContent = `TRANSMITTING: ${tracks[i].title}`;
+    audioPlayer.load();
+    audioPlayer.play();
+  }
+
+  function togglePlay() {
+    if (!audioPlayer.src) loadTrack(currentTrack);
+    else audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
+  }
+
+  function nextTrack() {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  function prevTrack() {
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  document.getElementById("prev-btn")?.addEventListener("click", prevTrack);
+  document.getElementById("play-btn")?.addEventListener("click", togglePlay);
+  document.getElementById("next-btn")?.addEventListener("click", nextTrack);
+  audioPlayer?.addEventListener("ended", nextTrack);
+</script>
 </body>
 </html>
