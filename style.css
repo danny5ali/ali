@@ -342,6 +342,18 @@ iframe {
   cursor: pointer;
   white-space: nowrap;
 }
+    input,
+button,
+input:focus,
+button:focus {
+  color: black;
+  background: gold;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  font-weight: 900;
+}
   }
 }
 
