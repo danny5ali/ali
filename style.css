@@ -390,7 +390,26 @@ button:focus {
   font-weight: bold;
   background: #222;
 }
+.reaction-button {
+  font-size: 0.6rem;
+  padding: 2px 4px;
+  margin-right: 4px;
+  border: none;
+  background: transparent;
+  color: gold;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
 
+.reaction-button:hover {
+  opacity: 1;
+}
+
+.reaction-button.reacted {
+  font-weight: bold;
+  color: #fff;
+}
   }
 }
 
