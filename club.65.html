@@ -53,6 +53,7 @@
           <source src="club.65/:5TH SENSE/01 wait4this.mp3" type="audio/mp3">
           Your browser does not support the audio element.
         </audio>
+        <div id="track-title" style="color: gold; margin-top: 8px;"></div>
 
         <div class="controls-95" style="margin-top: 12px;">
           <button onclick="prevTrack()">BACK</button>
@@ -156,6 +157,18 @@
     currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
     loadTrack(currentTrack);
   }
+    function togglePlay() {
+  if (!audioPlayer.src || audioPlayer.src === window.location.href) {
+    loadTrack(currentTrack);
+  } else if (audioPlayer.paused) {
+    audioPlayer.play();
+  } else {
+    audioPlayer.pause();
+  }
+}
+    // Append at the end
+audioPlayer.addEventListener('ended', nextTrack);
+
   </script>
   
 
