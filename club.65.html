@@ -6,7 +6,7 @@
   <title>CLUB.65</title>
   <link rel="stylesheet" href="/style.css"/>
   <style>
-    /* your existing style.css covers most; here’s just the lock-screen override */
+    /* only overrides here; the rest lives in style.css */
     .lock-screen {
       display: flex;
       flex-direction: column;
@@ -19,11 +19,10 @@
       letter-spacing: -0.08em;
       text-align: center;
     }
-    input, button { margin-top:1em; padding:.5em 1em; }
-    #protected-content, #chat-container { display: none; }
+    input, button { margin-top:1em; padding:.5em 1em }
+    #protected-content, #chat-container { display: none }
   </style>
-
-  <!-- Strict CSP (no unsafe-eval) -->
+  <!-- strict CSP -->
   <meta http-equiv="Content-Security-Policy"
         content="
           default-src 'self';
@@ -33,45 +32,45 @@
         ">
 </head>
 <body>
-  <!-- Back to home -->
+  <!-- back link -->
   <div style="text-align:center; margin:20px 0;">
-    <a href="/" style="color:gold; text-decoration:none; font-weight:900; font-family:'Montserrat'; letter-spacing:-0.08em;">
+    <a href="/"
+       style="color:gold;text-decoration:none;font-weight:900;font-family:'Montserrat';letter-spacing:-0.08em">
       ← Back to Home
     </a>
   </div>
 
-  <!-- Lock screen -->
+  <!-- lock screen -->
   <div id="lock-screen" class="lock-screen">
     <h2>CLUB.65: access required</h2>
-    <p style="max-width:600px; color:gold;">
+    <p style="max-width:600px;color:gold;line-height:1.4">
       <strong>CLUB.65</strong> is a private transmission line into ALIWORLD. 
-      Unreleased music. Secret visual streams. A live community signal chat. 
+      Unreleased music. Secret visual streams. Live community chat. 
       Monthly entry, lifetime invite.
     </p>
-    <input id="password-input" type="password" placeholder="enter access code" />
+    <input id="password-input" type="password" placeholder="enter access code"/>
     <button id="unlock-btn">unlock with passcode.</button>
     <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
-       style="display:block; margin-top:16px; padding:10px 24px;
-              background:gold; color:#000; text-decoration:none;
-              font-family:'Montserrat'; font-weight:900; box-shadow:3px 3px #000;">
+       style="display:block;margin-top:16px;padding:10px 24px;background:gold;color:#000;
+              text-decoration:none;font-family:'Montserrat';font-weight:900;box-shadow:3px 3px #000">
       GET ACCESS →
     </a>
   </div>
 
-  <!-- Protected content -->
-  <div id="protected-content" style="padding:24px;">
-    <h1 style="text-align:center; color:gold;">club.65</h1>
-    <p style="text-align:center; color:gold;">by invite only.</p>
-    <div style="display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:2em;">
+  <!-- protected content -->
+  <div id="protected-content" style="padding:24px">
+    <h1 style="text-align:center;color:gold">club.65</h1>
+    <p style="text-align:center;color:gold">by invite only.</p>
+    <div style="display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:2em">
       <div>
-        <h3 style="color:gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
-        <div style="text-align:center; margin-bottom:20px;">
+        <h3 style="color:gold">club.65 exclusive mixtape: "5TH SENSE"</h3>
+        <div style="text-align:center;margin-bottom:20px">
           <img src="/win95_icons/5TH_SENSE.png" alt="5TH SENSE Cover"
-               style="max-width:240px;width:100%;border:2px solid gold;box-shadow:2px 2px #000;">
+               style="max-width:240px;width:100%;border:2px solid gold;box-shadow:2px 2px #000">
         </div>
-        <div id="track-title" style="color:gold; font-weight:bold; margin-bottom:8px;"></div>
-        <audio id="audio-player" controls style="width:100%;"></audio>
-        <div style="text-align:center; margin-top:12px;">
+        <div id="track-title" style="color:gold;font-weight:bold;margin-bottom:8px"></div>
+        <audio id="audio-player" controls style="width:100%"></audio>
+        <div style="text-align:center;margin-top:12px">
           <button onclick="prevTrack()">⏮</button>
           <button onclick="togglePlay()">⏯</button>
           <button onclick="nextTrack()">⏭</button>
@@ -80,38 +79,33 @@
     </div>
   </div>
 
-  <!-- Chat -->
-  <div id="chat-container" style="padding:0 24px 24px;">
-    <h3 style="text-align:center; color:gold;">THE SIGNAL</h3>
-    <div style="max-width:600px; margin:0 auto;">
+  <!-- chat -->
+  <div id="chat-container" style="padding:0 24px 24px">
+    <h3 style="text-align:center;color:gold">THE SIGNAL</h3>
+    <div style="max-width:600px;margin:0 auto">
       <div id="chat-box"
-           style="height:300px; overflow-y:auto; background:#111; color:gold;
-                  padding:1em; font-family:'Courier New'; border:2px solid gold;
-                  box-shadow:4px 4px #000;"></div>
-      <form id="chat-form" style="display:flex; margin-top:8px;">
+           style="height:300px;overflow-y:auto;background:#111;color:gold;
+                  padding:1em;font-family:'Courier New';border:2px solid gold;
+                  box-shadow:4px 4px #000"></div>
+      <form id="chat-form" style="display:flex;margin-top:8px">
         <input id="message-input" type="text" placeholder="send a message..."
-               style="flex:1; padding:.5em;" />
+               style="flex:1;padding:.5em">
         <button type="submit">Send</button>
       </form>
     </div>
   </div>
 
-  <!-- Modular-SDK Script -->
+  <!-- modular Firebase + logic -->
   <script type="module">
-    // imports
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
     import {
-      getFirestore,
-      collection,
-      addDoc,
-      query,
-      orderBy,
-      onSnapshot,
-      serverTimestamp
+      getFirestore, collection, addDoc, query, orderBy,
+      onSnapshot, serverTimestamp
     } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-    // your config
+    // config
     const firebaseConfig = {
       apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
       authDomain: "club65signal.firebaseapp.com",
@@ -126,7 +120,7 @@
     const auth = getAuth(app);
     const db   = getFirestore(app);
 
-    // audio setup
+    // audio
     const tracks = [
       { title: "WAIT4THIS", file: "/5TH SENSE/01 wait4this.mp3" },
       { title: "SOLOW",     file: "/5TH SENSE/02 SOLOW.mp3" },
@@ -139,37 +133,36 @@
     const audioPlayer = document.getElementById("audio-player");
     const trackTitle  = document.getElementById("track-title");
 
-    function loadTrack(i){
+    function loadTrack(i) {
       audioPlayer.src = tracks[i].file;
       trackTitle.textContent = `TRANSMITTING: ${tracks[i].title}`;
       audioPlayer.load(); audioPlayer.play();
     }
-    function togglePlay(){
+    function togglePlay() {
       if(!audioPlayer.src) loadTrack(currentTrack);
       else audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
     }
-    function nextTrack(){ currentTrack = (currentTrack+1)%tracks.length; loadTrack(currentTrack); }
-    function prevTrack(){ currentTrack = (currentTrack-1+tracks.length)%tracks.length; loadTrack(currentTrack); }
+    function nextTrack() { currentTrack=(currentTrack+1)%tracks.length; loadTrack(currentTrack); }
+    function prevTrack() { currentTrack=(currentTrack-1+tracks.length)%tracks.length; loadTrack(currentTrack); }
     audioPlayer.addEventListener("ended", nextTrack);
 
-    // password gating + chat
+    // gating + chat
     const correctPassword = "AL1WORLD2025";
     document.getElementById("unlock-btn").onclick = verifyPassword;
-    document.getElementById("password-input").addEventListener("keydown", e=>{
+    document.getElementById("password-input").addEventListener("keydown", e => {
       if(e.key==="Enter"){ e.preventDefault(); verifyPassword(); }
     });
     if(localStorage.getItem("club65_unlocked")==="true"
-       || new URLSearchParams(location.search).get("access")==="granted"){
+       || new URLSearchParams(location.search).get("access")==="granted") {
       doUnlock();
     }
 
     function verifyPassword(){
-      if(document.getElementById("password-input").value===correctPassword){
+      const val = document.getElementById("password-input").value;
+      if(val===correctPassword){
         localStorage.setItem("club65_unlocked","true");
         doUnlock();
-      } else {
-        alert("Incorrect password.");
-      }
+      } else alert("Incorrect password.");
     }
 
     function doUnlock(){
