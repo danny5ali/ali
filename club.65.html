@@ -74,7 +74,11 @@
       <div class="player-container">
         <h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
         <div class="player-art" style="text-align:center; margin-bottom:20px;">
-          <img src="/win95_icons/5TH_SENSE.png" alt="5TH SENSE Cover" style="max-width:240px; width:100%; border:2px solid gold; box-shadow:2px 2px #000;">
+          <img src="/win95_icons/5TH_SENSE.png"
+     alt="5TH SENSE Cover"
+     onload="this.style.opacity=1"
+     onerror="this.style.display='none'"
+     style="width:100%; max-width:240px; height:auto; border:2px solid gold; box-shadow:2px 2px #000; object-fit:cover; opacity:0; transition:opacity .3s ease-in-out;">
         </div>
         <div id="track-title" style="color: gold; font-weight:bold; margin-bottom:8px;"></div>
         <audio id="audio-player" controls style="width:100%;"></audio>
