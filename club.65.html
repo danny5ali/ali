@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CLUB.65</title>
@@ -41,7 +43,7 @@
 };
 
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+  const db = firebase.firestore();
 </script>
 
 <body>
@@ -142,11 +144,6 @@
   <!-- JavaScript -->
   <script>
     const correctPassword = "AL1WORLD2025";
-
-    function unlock() {
-      document.getElementById('lock-screen').style.display = 'none';
-      document.getElementById('protected-content').style.display = 'block';
-    }
 
     function verifyPassword() {
       const input = document.getElementById('password-input').value;
