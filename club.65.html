@@ -107,21 +107,60 @@
   <script>
     const correctPassword = "AL1WORLD2025";
 
-    function unlock() {
-      document.getElementById('lock-screen').style.display = 'none';
-      document.getElementById('protected-content').style.display = 'block';
-      document.getElementById('chat-container').style.display = 'block';
-      localStorage.setItem('club65_unlocked', 'true');
+function unlock() {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('protected-content').style.display = 'block';
+  document.getElementById('chat-container').style.display = 'block';
 
-      let alias = localStorage.getItem('club65_alias');
-      if (!alias) {
-        alias = prompt("enter your CLUB.65 alias ():") || "anon";
-        localStorage.setItem('club65_alias', alias);
-      }
+  if (!localStorage.getItem('club65_alias')) {
+    const alias = prompt("enter your CLUB.65 alias ():") || "anon";
+    localStorage.setItem('club65_alias', alias);
+  }
 
-      firebase.auth().signInAnonymously().then(() => {
-        console.log("signed in anonymously as:", alias);
+  // Sign in then log alias
+  firebase.auth().signInAnonymously().then(() => {
+    const alias = localStorage.getItem('club65_alias') || "anon";
+    console.log("signed in anonymously as:", alias);
+  });
+}
+
+     // === Always set up chat listener ===
+firebase.auth().onAuthStateChanged(() => {
+  const alias = localStorage.getItem('club65_alias') || "anon";
+
+  const chatBox = document.getElementById("chat-box");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("message-input");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!input.value.trim()) return;
+
+      db.collection("messages").add({
+        alias: alias,
+        text: input.value.trim(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
+
+      input.value = "";
+    });
+
+    // Real-time + historical messages
+    db.collection("messages")
+      .orderBy("timestamp")
+      .onSnapshot(snapshot => {
+        chatBox.innerHTML = "";
+        snapshot.forEach(doc => {
+          const msg = doc.data();
+          if (!msg.deleted) {
+            chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
+          }
+        });
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+  }
+});
 
       const chatBox = document.getElementById("chat-box");
       const form = document.getElementById("chat-form");
