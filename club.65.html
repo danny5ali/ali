@@ -135,7 +135,7 @@
 
   function loadTrack(index) {
     audioPlayer.src = tracks[index].file;
-    trackTitle.textContent = `Now Playing: ${tracks[index].title}`;
+    trackTitle.textContent = `TRANSMITTING: ${tracks[index].title}`;
     audioPlayer.load();
     audioPlayer.play();
   }
