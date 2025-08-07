@@ -139,15 +139,24 @@
         input.value = "";
       });
 
-      db.collection("messages").orderBy("timestamp").onSnapshot(snapshot => {
-        chatBox.innerHTML = "";
-        snapshot.forEach(doc => {
-          const msg = doc.data();
-          const date = msg.timestamp?.toDate().toLocaleString() || "";
-          chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text} <span style="font-size: 0.7rem; color: gray;">${date}</span></p>`;
-        });
-        chatBox.scrollTop = chatBox.scrollHeight;
-      });
+     db.collection("messages")
+  .orderBy("timestamp", "asc")
+  .onSnapshot(snapshot => {
+    chatBox.innerHTML = ""; // Reset
+    snapshot.forEach(doc => {
+      const msg = doc.data();
+      const date = msg.timestamp?.toDate().toLocaleString() || "";
+      const alias = msg.alias || "anon";
+      const text = msg.text || "";
+      chatBox.innerHTML += `
+        <p style="margin-bottom: 8px;">
+          <strong>${alias}:</strong> ${text}
+          <br>
+          <span style="font-size: 0.7rem; color: gray;">${date}</span>
+        </p>`;
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
     }
 
     function verifyPassword() {
