@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CLUB.65</title>
@@ -26,25 +24,26 @@
       padding: 0.5em 1em;
     }
   </style>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbDlpt3HzxOTR1PTFsj6u1N3U3VVSuC4g",
+      authDomain: "club65-a644d.firebaseapp.com",
+      projectId: "club65-a644d",
+      storageBucket: "club65-a644d.firebasestorage.app",
+      messagingSenderId: "472688987440",
+      appId: "1:472688987440:web:188ab245964db7ee638cf5",
+      measurementId: "G-5XWR974X7N"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
-  <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-
-<script>
-  const firebaseConfig = {
-  apiKey: "AIzaSyAbDlpt3HzxOTR1PTFsj6u1N3U3VVSuC4g",
-  authDomain: "club65-a644d.firebaseapp.com",
-  projectId: "club65-a644d",
-  storageBucket: "club65-a644d.firebasestorage.app",
-  messagingSenderId: "472688987440",
-  appId: "1:472688987440:web:188ab245964db7ee638cf5",
-  measurementId: "G-5XWR974X7N"
-};
-
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
 
 <body>
 
@@ -57,32 +56,25 @@
 
   <!-- Protected Content -->
   <div id="protected-content" style="display: none; padding: 24px;">
-
     <h1 style="color: gold; text-align: center;">club.65</h1>
     <p style="text-align: center;">by invite only.</p>
 
     <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-
-      <!-- Secret Album -->
       <div class="player-container">
         <h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
-          <div class="player-art" style="text-align: center; margin-bottom: 20px;">
-    <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
-  </div>
-<div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
+        <div class="player-art" style="text-align: center; margin-bottom: 20px;">
+          <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
+        </div>
+        <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
         <audio id="audio-player" controls style="width:100%;">
           <source src="club.65/:5TH SENSE/01 wait4this.mp3" type="audio/mp3">
-          Your browser does not support the audio element.
         </audio>
-        <div id="track-title" style="color: gold; margin-top: 8px;"></div>
-
         <div class="controls-95" style="margin-top: 12px;">
           <button onclick="prevTrack()">BACK</button>
           <button onclick="togglePlay()">PLAY</button>
           <button onclick="nextTrack()">NEXT</button>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -91,59 +83,64 @@
     <h2>CLUB.65: access required</h2>
     <input type="password" id="password-input" placeholder="Enter access code" />
     <button onclick="verifyPassword()">Unlock</button>
-    <a 
-      href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" 
-      target="_blank" 
-      style="
-        display: inline-block;
-        margin-top: 16px;
-        padding: 10px 24px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 900;
-        font-size: 0.95rem;
-        letter-spacing: -0.08em;
-        color: #000;
-        background: gold;
-        border: 2px solid #000;
-        text-decoration: none;
-        box-shadow: 3px 3px #000;
-        transition: all 0.2s ease-in-out;
-      "
-      onmouseover="this.style.background='#fff'; this.style.color='#000'"
-      onmouseout="this.style.background='gold'; this.style.color='#000'"
-    >
+    <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank" style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000; transition: all 0.2s ease-in-out;"
+    onmouseover="this.style.background='#fff'; this.style.color='#000'" 
+    onmouseout="this.style.background='gold'; this.style.color='#000'">
       GET ACCESS →
     </a>
   </div>
-   <!-- CLUB.65 CHAT ROOM -->
-<div id="chat-container" style="display: none;">
-  <h3 style="color: gold;">THE SIGNAL</h3>
-<!-- CHAT BOX -->
-<div style="display: flex; flex-direction: column; align-items: center;">
-  <div id="chat-box" style="
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  overflow-y: auto;
-  background: #111;
-  color: gold;
-  padding: 1em;
-  font-family: 'Courier New', monospace;
-  margin: 20px auto;
-  border: 2px solid gold;
-  box-shadow: 4px 4px #000;
-"></div>
 
-<form id="chat-form">
-  <input type="text" id="message-input" placeholder="send a message..." style="width: 70%;" />
-  <button type="submit">Send</button>
-</form>
-  </div>
+  <!-- Chat -->
+  <div id="chat-container" style="display: none;">
+    <h3 style="color: gold;">THE SIGNAL</h3>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div id="chat-box" style="width: 100%; max-width: 600px; height: 300px; overflow-y: auto; background: #111; color: gold; padding: 1em; font-family: 'Courier New', monospace; margin: 20px auto; border: 2px solid gold; box-shadow: 4px 4px #000;"></div>
+      <form id="chat-form">
+        <input type="text" id="message-input" placeholder="send a message..." style="width: 70%;" />
+        <button type="submit">Send</button>
+      </form>
     </div>
+  </div>
 
-  <!-- JavaScript -->
+  <!-- Logic -->
   <script>
     const correctPassword = "AL1WORLD2025";
+
+    function unlock() {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('protected-content').style.display = 'block';
+      document.getElementById('chat-container').style.display = 'block';
+
+      const alias = prompt("enter your CLUB.65 alias ():");
+
+      firebase.auth().signInAnonymously().then(() => {
+        console.log("signed in anonymously as:", alias);
+      });
+
+      const chatBox = document.getElementById("chat-box");
+      const form = document.getElementById("chat-form");
+      const input = document.getElementById("message-input");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!input.value.trim()) return;
+        db.collection("messages").add({
+          alias: alias,
+          text: input.value.trim(),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        input.value = "";
+      });
+
+      db.collection("messages").orderBy("timestamp").onSnapshot(snapshot => {
+        chatBox.innerHTML = "";
+        snapshot.forEach(doc => {
+          const msg = doc.data();
+          chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
+        });
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+    }
 
     function verifyPassword() {
       const input = document.getElementById('password-input').value;
@@ -154,108 +151,62 @@
       }
     }
 
-    // Allow Stripe redirect to auto-unlock
+    // Enable "Enter" key to trigger password check
+    document.getElementById("password-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        verifyPassword();
+      }
+    });
+
+    // Unlock automatically via Stripe redirect
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('access') === 'granted') {
       unlock();
     }
 
-    // Audio logic
-     const tracks = [
-    { title: "WAIT4THIS", file: "club.65/:5TH SENSE/01 wait4this.mp3" },
-    { title: "SOLOW", file: "club.65/:5TH SENSE/02 SOLOW.mp3" },
-    { title: "SO SICK", file: "club.65/:5TH SENSE/03 SO SICK.mp3" },
-    { title: "THE DARK KNIGHT", file: "club.65/:5TH SENSE/04 THE DARK KNIGHT.mp3" },
-    { title: "LETMEGO", file: "club.65/:5TH SENSE/05 LETMEGO.mp3" },
-    { title: "REAL BIG", file: "club.65/:5TH SENSE/06 REAL BIG.m4a" }
-  ];
+    // AUDIO LOGIC
+    const tracks = [
+      { title: "WAIT4THIS", file: "club.65/:5TH SENSE/01 wait4this.mp3" },
+      { title: "SOLOW", file: "club.65/:5TH SENSE/02 SOLOW.mp3" },
+      { title: "SO SICK", file: "club.65/:5TH SENSE/03 SO SICK.mp3" },
+      { title: "THE DARK KNIGHT", file: "club.65/:5TH SENSE/04 THE DARK KNIGHT.mp3" },
+      { title: "LETMEGO", file: "club.65/:5TH SENSE/05 LETMEGO.mp3" },
+      { title: "REAL BIG", file: "club.65/:5TH SENSE/06 REAL BIG.m4a" }
+    ];
 
-  let currentTrack = 0;
-  const audioPlayer = document.getElementById("audio-player");
-  const trackTitle = document.getElementById("track-title");
+    let currentTrack = 0;
+    const audioPlayer = document.getElementById("audio-player");
+    const trackTitle = document.getElementById("track-title");
 
-  function loadTrack(index) {
-    audioPlayer.src = tracks[index].file;
-    trackTitle.textContent = `TRANSMITTING: ${tracks[index].title}`;
-    audioPlayer.load();
-    audioPlayer.play();
-  }
-
-  function togglePlay() {
-    if (audioPlayer.paused) {
+    function loadTrack(index) {
+      audioPlayer.src = tracks[index].file;
+      trackTitle.textContent = `TRANSMITTING: ${tracks[index].title}`;
+      audioPlayer.load();
       audioPlayer.play();
-    } else {
-      audioPlayer.pause();
     }
-  }
 
-  function nextTrack() {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    loadTrack(currentTrack);
-  }
-
-  function prevTrack() {
-    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-    loadTrack(currentTrack);
-  }
     function togglePlay() {
-  if (!audioPlayer.src || audioPlayer.src === window.location.href) {
-    loadTrack(currentTrack);
-  } else if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-}
-    // Append at the end
-audioPlayer.addEventListener('ended', nextTrack);
+      if (!audioPlayer.src || audioPlayer.src === window.location.href) {
+        loadTrack(currentTrack);
+      } else if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    }
 
+    function nextTrack() {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    }
+
+    function prevTrack() {
+      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      loadTrack(currentTrack);
+    }
+
+    audioPlayer.addEventListener('ended', nextTrack);
   </script>
-  <script>
- function unlock() {
-  document.getElementById('lock-screen').style.display = 'none';
-  document.getElementById('protected-content').style.display = 'block';
-  document.getElementById("chat-container").style.display = "block";
-
-
-  // FIREBASE CHAT LOGIC (only runs after unlock)
-  const alias = prompt("enter your CLUB.65 alias ():");
-
-  // Sign in anonymously
-  firebase.auth().signInAnonymously().then(() => {
-    console.log("signed in anonymously as:", alias);
-  });
-
-  const chatBox = document.getElementById("chat-box");
-  const form = document.getElementById("chat-form");
-  const input = document.getElementById("message-input");
-
-  // Send message
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!input.value.trim()) return;
-
-    db.collection("messages").add({
-      alias: alias,
-      text: input.value.trim(),
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    });
-
-    input.value = "";
-  });
-
-  // Load messages in real time
-  db.collection("messages").orderBy("timestamp").onSnapshot(snapshot => {
-    chatBox.innerHTML = "";
-    snapshot.forEach(doc => {
-      const msg = doc.data();
-      chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
-    });
-    chatBox.scrollTop = chatBox.scrollHeight;
-  });
-}
-
-
-
 </body>
 </html>
