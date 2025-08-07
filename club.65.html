@@ -1,156 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WORLD. // XX.XX.25</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLUB.65</title>
+  <link rel="stylesheet" href="/style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
+    .lock-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       background: #000;
       color: gold;
       font-family: 'Montserrat', sans-serif;
-    }
-
-    .club65-button-container {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .club65-button {
-      background: gold;
-      color: black;
-      padding: 10px 24px;
-      font-weight: 900;
-      text-decoration: none;
-      box-shadow: 3px 3px black;
       letter-spacing: -0.08em;
-    }
-
-    main {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 20px;
     }
-
-    .centered-content {
-      max-width: 480px;
-      width: 100%;
+    input, button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
     }
-
-    .headline {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      color: gold;
-    }
-
-    .countdown-label {
-      font-size: 14px;
-      color: white;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .countdown-timer {
-      font-size: 32px;
-      font-weight: bold;
-      color: white;
-      letter-spacing: 4px;
-      margin-bottom: 36px;
-    }
-
-    .beehiiv-embed {
-      width: 100%;
-      height: 250px;
-      background: transparent;
-      border: none;
-      margin-bottom: 24px;
-    }
-
-    .footer-text {
-      margin-top: 24px;
-      font-size: 12px;
-      color: #aaa;
-      font-style: italic;
-    }
-
-    .social-icons {
-      margin-top: 20px;
-    }
-
-    .social-icons img {
-      width: 28px;
-      height: 28px;
-      filter: brightness(0) invert(1);
-      transition: transform 0.2s ease;
-    }
-
-    .social-icons img:hover {
-      transform: scale(1.1);
-    }
+    #protected-content,
+    #chat-container { display: none; }
   </style>
 
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const countdown = document.getElementById('countdown');
-      const end = new Date("August 18, 2025 00:00:00").getTime();
-      setInterval(() => {
-        const diff = end - Date.now();
-        if (diff <= 0) {
-          countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
-          return;
-        }
-        const d = Math.floor(diff / 86400000),
-              h = Math.floor((diff % 86400000) / 3600000),
-              m = Math.floor((diff % 3600000) / 60000),
-              s = Math.floor((diff % 60000) / 1000);
-        countdown.innerHTML = `${d}D ${h}H ${m}M ${s}S`;
-      }, 1000);
-    });
+    const firebaseConfig = {
+      apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
+      authDomain: "club65signal.firebaseapp.com",
+      projectId: "club65signal",
+      storageBucket: "club65signal.firebasestorage.app",
+      messagingSenderId: "135479902138",
+      appId: "1:135479902138:web:1f7fa526d3e358924d6783",
+      measurementId: "G-VWV60SGYY4"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
   </script>
 </head>
 
 <body>
-  <div class="club65-button-container">
-    <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
+  <div class="back-home-wrapper" style="text-align: center; margin-top: 20px;">
+    <a href="/" style="color: gold; text-decoration: none; font-weight: 900; font-family: 'Montserrat', sans-serif; letter-spacing: -0.08em;">
+      &larr; Back to Home
+    </a>
   </div>
 
-  <main>
-    <div class="centered-content">
-      <h1 class="headline">THE WORLD IS YOURS.</h1>
-      <p class="countdown-label">THE COUNTDOWN BEGINS</p>
-      <div id="countdown" class="countdown-timer">--D --H --M --S</div>
+  <!-- Lock Screen -->
+<div id="lock-screen" class="lock-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 24px; background: #000; color: #FFD700; font-family: 'Montserrat', sans-serif; text-align: center;">
+  <h2 style="font-size: 1.75rem; margin-bottom: 16px;">CLUB.65: access required</h2>
 
-      <!-- Beehiiv Embed -->
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
-              class="beehiiv-embed"
-              frameborder="0"
-              scrolling="no">
-      </iframe>
+  <div style="max-width: 480px; font-size: 0.95rem; line-height: 1.8; color: white;">
+    <p><strong style="color: #FFD700;">CLUB.65</strong> is a private transmission line into <span style="font-weight: bold;">ALIWORLD</span>.</p>
+    <p>unreleased music</p>
+    <p>secret visual streams</p>
+    <p>live community signal chat</p>
+    <p>monthly entry, lifetime invite</p>
+  </div>
 
-      <div class="social-icons">
-        <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
+  <!-- GET ACCESS Button -->
+  <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
+     style="display: block; margin-top: 32px; padding: 12px 24px; background: #FFD700; color: #000; font-weight: 900; font-family: 'Montserrat', sans-serif; text-decoration: none; box-shadow: 3px 3px #000;">
+    GET ACCESS &rarr;
+  </a>
+
+  <!-- Passcode Section -->
+  <div style="margin-top: 40px; width: 100%; max-width: 300px;">
+    <input type="password" id="password-input" placeholder="enter access code"
+           style="width: 100%; padding: 12px; font-size: 1rem; background: #444; color: #ddd; border: 2px solid #FFD700; font-family: 'Courier New', monospace; text-align: center;" />
+    <button id="unlock-btn"
+            style="margin-top: 12px; padding: 12px; width: 100%; font-size: 1rem; background: #333; color: #ddd; font-weight: 900; font-family: 'Montserrat', sans-serif; border: 2px solid #FFD700; box-shadow: 2px 2px #000;">
+      unlock with passcode.
+    </button>
+  </div>
+</div>
+
+<!-- Separated passcode section -->
+<div style="margin-top: 24px;">
+  <input type="password" id="password-input" placeholder="enter access code"
+         style="background: #111; color: #FFD700; border: 2px solid gold; font-family: 'Courier New', monospace;" />
+  <button id="unlock-btn"
+          style="background: #222; color: gold; font-weight: 900; font-family: 'Montserrat', sans-serif; border: 2px solid gold; margin-top: 12px;">
+    unlock with passcode.
+  </button>
+</div>
+  </div>
+
+  <!-- Protected Content -->
+  <div id="protected-content" style="padding:24px;">
+    <h1 style="color: gold; text-align: center;">club.65</h1>
+    <p style="text-align: center; color: gold;">by invite only.</p>
+
+    <div class="vault-grid" style="margin-top:2em; display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+      <div class="player-container">
+        <h3 style="color: gold;">club.65 exclusive mixtape: '5TH SENSE'</h3>
+        <div class="player-art" style="text-align:center; margin-bottom:20px;">
+          <img src="/win95_icons/5TH SENSE.png"
+               alt="5TH SENSE Cover"
+               onload="this.style.opacity=1"
+               onerror="this.style.display='none'"
+               style="width:100%; max-width:240px; height:auto; border:2px solid gold; box-shadow:2px 2px #000; object-fit:cover; opacity:0; transition:opacity .3s ease-in-out;">
+        </div>
+        <div id="track-title" style="color: gold; font-weight:bold; margin-bottom:8px;"></div>
+        <audio id="audio-player" controls style="width:100%;"></audio>
+        <div class="controls-95" style="margin-top:12px; text-align:center;">
+          <button onclick="prevTrack()">prev</button>
+          <button onclick="togglePlay()">play</button>
+          <button onclick="nextTrack()">next</button>
+        </div>
+        <a href="https://u.pcloud.link/publink/show?code=kZzh1W5ZWRnWOPuCpb7o9129YFmrGzvDIzE7" target="_blank"
+           style="display:inline-block; margin-top:16px; padding:10px 24px; background:gold; color:#000; text-decoration:none; font-family:'Montserrat'; font-weight:900; box-shadow:3px 3px #000;">
+          download the mixtape
         </a>
       </div>
-
-      <p class="footer-text">you felt it too, right?</p>
     </div>
-  </main>
+  </div>
+
+  <!-- Chat -->
+  <div id="chat-container">
+    <h3 style="color: gold; text-align:center;">THE SIGNAL</h3>
+    <div id="chat-wrapper">
+      <div id="chat-box"></div>
+      <form id="chat-form">
+        <input id="message-input" type="text" placeholder="send a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Combined Script -->
+  <script>
+  // Audio setup
+  const tracks = [
+    { title: "WAIT4THIS", file: "/5TH SENSE/01 wait4this.mp3" },
+    { title: "SOLOW", file: "/5TH SENSE/02 SOLOW.mp3" },
+    { title: "SO SICK", file: "/5TH SENSE/03 SO SICK.mp3" },
+    { title: "THE DARK KNIGHT", file: "/5TH SENSE/04 THE DARK KNIGHT.mp3" },
+    { title: "LETMEGO", file: "/5TH SENSE/05 LETMEGO.mp3" },
+    { title: "REAL BIG", file: "/5TH SENSE/06 REAL BIG.m4a" }
+  ];
+  let currentTrack = 0;
+  const audioPlayer = document.getElementById("audio-player");
+  const trackTitle  = document.getElementById("track-title");
+
+  function loadTrack(i) {
+    audioPlayer.src = tracks[i].file;
+    trackTitle.textContent = `TRANSMITTING: ${tracks[i].title}`;
+    audioPlayer.load();
+    audioPlayer.play();
+  }
+
+  function togglePlay() {
+    if (!audioPlayer.src || audioPlayer.src === window.location.href) {
+      loadTrack(currentTrack);
+    } else {
+      audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
+    }
+  }
+
+  function nextTrack() {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  function prevTrack() {
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+    loadTrack(currentTrack);
+  }
+
+  audioPlayer.addEventListener("ended", nextTrack);
+
+  // Auth & Chat
+  const correctPassword = "AL1WORLD2025";
+  document.getElementById('unlock-btn').onclick = verifyPassword;
+  document.getElementById('password-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      verifyPassword();
+    }
+  });
+
+  if (localStorage.getItem('club65_unlocked') === 'true' || new URLSearchParams(window.location.search).get('access') === 'granted') {
+    doUnlock();
+  }
+
+  function verifyPassword() {
+    if (document.getElementById('password-input').value === correctPassword) {
+      localStorage.setItem('club65_unlocked', 'true');
+      doUnlock();
+    } else {
+      alert('Incorrect password.');
+    }
+  }
+
+  function doUnlock() {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('protected-content').style.display = 'block';
+    document.getElementById('chat-container').style.display = 'block';
+
+    let alias = localStorage.getItem('club65_alias');
+    if (!alias) {
+      alias = prompt('enter your CLUB.65 alias ():') || 'anon';
+      localStorage.setItem('club65_alias', alias);
+    }
+
+    firebase.auth().signInAnonymously().catch(console.error);
+  }
+
+  // Helper: escape HTML in messages
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) return;
+
+    const alias = localStorage.getItem('club65_alias') || 'anon';
+    const chatBox = document.getElementById('chat-box');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('message-input');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const txt = input.value.trim();
+      if (!txt) return;
+
+      db.collection('messages').add({
+        alias,
+        text: txt,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      input.value = '';
+    });
+
+    db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snap => {
+      let buffer = "";
+      const reactionEmojis = ["🔥", "🦋", "👀"];
+
+      snap.forEach(doc => {
+        const m = doc.data();
+        if (m.deleted) return;
+
+        const t = m.timestamp?.toDate().toLocaleTimeString() || '';
+        const isYou = m.alias === alias;
+
+        const reactions = m.reactions || {};
+        let reactionHTML = "";
+        reactionEmojis.forEach(emoji => {
+          const users = reactions[emoji] || [];
+          const count = users.length;
+          const reacted = users.includes(alias);
+          reactionHTML += `
+            <button class="reaction-button ${reacted ? 'reacted' : ''}"
+                    data-id="${doc.id}"
+                    data-emoji="${emoji}">
+              ${emoji} ${count > 0 ? count : ""}
+            </button>`;
+        });
+
+        buffer += `
+          <div class="chat-message ${isYou ? 'you' : ''}">
+            <div class="chat-meta">
+              <span class="chat-alias">${esc(m.alias)}</span>
+            </div>
+            <div class="chat-text">${esc(m.text)}</div>
+            <div class="chat-reactions">${reactionHTML}</div>
+            <div class="chat-timestamp">${t}</div>
+          </div>`;
+      });
+
+      chatBox.innerHTML = buffer;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // ONE delegated click listener for all reaction buttons
+    document.getElementById('chat-box').addEventListener('click', (e) => {
+      const btn = e.target.closest('.reaction-button');
+      if (!btn) return;
+
+      const docId = btn.getAttribute('data-id');
+      const emoji = btn.getAttribute('data-emoji');
+      const userAlias = alias;
+      const messageRef = db.collection('messages').doc(docId);
+
+      firebase.firestore().runTransaction(async (transaction) => {
+        const docSnap = await transaction.get(messageRef);
+        if (!docSnap.exists) return;
+
+        const data = docSnap.data();
+        const reactions = data.reactions || {};
+        const currentUsers = reactions[emoji] || [];
+
+        if (currentUsers.includes(userAlias)) {
+          reactions[emoji] = currentUsers.filter(u => u !== userAlias);
+        } else {
+          reactions[emoji] = [...currentUsers, userAlias];
+        }
+
+        transaction.update(messageRef, { reactions });
+      });
+    });
+  });
+  </script>
 </body>
 </html>
