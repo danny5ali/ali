@@ -48,7 +48,7 @@
           <div class="player-art" style="text-align: center; margin-bottom: 20px;">
     <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
   </div>
-
+<div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
         <audio id="audio-player" controls style="width:100%;">
           <source src="club.65/:5TH SENSE/01 wait4this.mp3" type="audio/mp3">
           Your browser does not support the audio element.
@@ -141,6 +141,11 @@
   const audioPlayer = document.getElementById("audio-player");
   const trackTitle = document.getElementById("track-title");
 
+    audioPlayer.play().catch(() => {
+  console.warn("Autoplay blocked. Waiting for user interaction.");
+});
+
+
   function loadTrack(index) {
     audioPlayer.src = tracks[index].file;
     trackTitle.textContent = `Now Playing: ${tracks[index].title}`;
@@ -169,6 +174,7 @@
   // Load first track on page load
   loadTrack(currentTrack);
   </script>
+  
 
 </body>
 </html>
