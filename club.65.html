@@ -55,9 +55,9 @@
         </audio>
 
         <div class="controls-95" style="margin-top: 12px;">
-          <button onclick="prevTrack()">⏮</button>
-          <button onclick="togglePlay()">⏯</button>
-          <button onclick="nextTrack()">⏭</button>
+          <button onclick="prevTrack()">BACK</button>
+          <button onclick="togglePlay()">PLAY</button>
+          <button onclick="nextTrack()">NEXT</button>
         </div>
       </div>
 
@@ -131,11 +131,6 @@
   let currentTrack = 0;
   const audioPlayer = document.getElementById("audio-player");
   const trackTitle = document.getElementById("track-title");
-
-    audioPlayer.play().catch(() => {
-  console.warn("Autoplay blocked. Waiting for user interaction.");
-});
-
 
   function loadTrack(index) {
     audioPlayer.src = tracks[index].file;
