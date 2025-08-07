@@ -166,16 +166,6 @@
     loadTrack(currentTrack);
   }
 
-    function loadTrack(index) {
-  audioPlayer.src = tracks[index].file;
-  trackTitle.textContent = `Now Playing: ${tracks[index].title}`;
-  audioPlayer.load();
-  audioPlayer.play().catch(() => {
-    console.log("Autoplay was blocked until user interaction.");
-  });
-
-  audioPlayer.addEventListener('ended', nextTrack);
-
   // Load first track on page load
   loadTrack(currentTrack);
   </script>
