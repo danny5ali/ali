@@ -18,7 +18,6 @@
       letter-spacing: -0.08em;
       text-align: center;
     }
-
     input, button {
       margin-top: 1em;
       padding: 0.5em 1em;
@@ -66,9 +65,7 @@
           <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
         </div>
         <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
-        <audio id="audio-player" controls style="width:100%;">
-          <source src="club.65/5TH SENSE/01 wait4this.mp3" type="audio/mp3">
-        </audio>
+        <audio id="audio-player" controls style="width:100%;"></audio>
         <div class="controls-95" style="margin-top: 12px;">
           <button onclick="prevTrack()">BACK</button>
           <button onclick="togglePlay()">PLAY</button>
@@ -81,11 +78,15 @@
   <!-- Lock Screen -->
   <div id="lock-screen" class="lock-screen">
     <h2>CLUB.65: access required</h2>
-    <input type="password" id="password-input" placeholder="Enter access code" />
-    <button onclick="verifyPassword()">Unlock</button>
-    <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank" style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000; transition: all 0.2s ease-in-out;"
-    onmouseover="this.style.background='#fff'; this.style.color='#000'" 
-    onmouseout="this.style.background='gold'; this.style.color='#000'">
+    <p style="max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.5; color: gold;">
+      <strong>CLUB.65</strong> is a private transmission line into ALIWORLD. unreleased music. secret visual streams. a live community signal chat. monthly entry, lifetime invite.
+    </p>
+    <input type="password" id="password-input" placeholder="enter access code" />
+    <button onclick="verifyPassword()">unlock with passcode.</button>
+    <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
+      style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000; transition: all 0.2s ease-in-out;"
+      onmouseover="this.style.background='#fff'; this.style.color='#000'"
+      onmouseout="this.style.background='gold'; this.style.color='#000'">
       GET ACCESS →
     </a>
   </div>
@@ -102,7 +103,7 @@
     </div>
   </div>
 
-  <!-- Logic -->
+  <!-- JavaScript -->
   <script>
     const correctPassword = "AL1WORLD2025";
 
@@ -110,8 +111,13 @@
       document.getElementById('lock-screen').style.display = 'none';
       document.getElementById('protected-content').style.display = 'block';
       document.getElementById('chat-container').style.display = 'block';
+      localStorage.setItem('club65_unlocked', 'true');
 
-      const alias = prompt("enter your CLUB.65 alias ():");
+      let alias = localStorage.getItem('club65_alias');
+      if (!alias) {
+        alias = prompt("enter your CLUB.65 alias ():") || "anon";
+        localStorage.setItem('club65_alias', alias);
+      }
 
       firebase.auth().signInAnonymously().then(() => {
         console.log("signed in anonymously as:", alias);
@@ -124,6 +130,7 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!input.value.trim()) return;
+
         db.collection("messages").add({
           alias: alias,
           text: input.value.trim(),
@@ -136,7 +143,8 @@
         chatBox.innerHTML = "";
         snapshot.forEach(doc => {
           const msg = doc.data();
-          chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
+          const date = msg.timestamp?.toDate().toLocaleString() || "";
+          chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text} <span style="font-size: 0.7rem; color: gray;">${date}</span></p>`;
         });
         chatBox.scrollTop = chatBox.scrollHeight;
       });
@@ -159,9 +167,8 @@
       }
     });
 
-    // Unlock automatically via Stripe redirect
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('access') === 'granted') {
+    // Auto-unlock if localStorage shows user already passed access
+    if (localStorage.getItem('club65_unlocked') === 'true' || new URLSearchParams(window.location.search).get('access') === 'granted') {
       unlock();
     }
 
