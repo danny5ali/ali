@@ -32,14 +32,14 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <script>
     const firebaseConfig = {
-  apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
-  authDomain: "club65signal.firebaseapp.com",
-  projectId: "club65signal",
-  storageBucket: "club65signal.firebasestorage.app",
-  messagingSenderId: "135479902138",
-  appId: "1:135479902138:web:1f7fa526d3e358924d6783",
-  measurementId: "G-VWV60SGYY4"
-};
+      apiKey: "AIzaSyASqRQ26zWWCISfOu_MGJVsGj6yAJ7jQFI",
+      authDomain: "club65signal.firebaseapp.com",
+      projectId: "club65signal",
+      storageBucket: "club65signal.firebasestorage.app",
+      messagingSenderId: "135479902138",
+      appId: "1:135479902138:web:1f7fa526d3e358924d6783",
+      measurementId: "G-VWV60SGYY4"
+    };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
   </script>
@@ -75,10 +75,10 @@
         <h3 style="color: gold;">club.65 exclusive mixtape: '5TH SENSE'</h3>
         <div class="player-art" style="text-align:center; margin-bottom:20px;">
           <img src="/win95_icons/5TH SENSE.png"
-     alt="5TH SENSE Cover"
-     onload="this.style.opacity=1"
-     onerror="this.style.display='none'"
-     style="width:100%; max-width:240px; height:auto; border:2px solid gold; box-shadow:2px 2px #000; object-fit:cover; opacity:0; transition:opacity .3s ease-in-out;">
+               alt="5TH SENSE Cover"
+               onload="this.style.opacity=1"
+               onerror="this.style.display='none'"
+               style="width:100%; max-width:240px; height:auto; border:2px solid gold; box-shadow:2px 2px #000; object-fit:cover; opacity:0; transition:opacity .3s ease-in-out;">
         </div>
         <div id="track-title" style="color: gold; font-weight:bold; margin-bottom:8px;"></div>
         <audio id="audio-player" controls style="width:100%;"></audio>
@@ -88,24 +88,24 @@
           <button onclick="nextTrack()">next</button>
         </div>
         <a href="https://u.pcloud.link/publink/show?code=kZzh1W5ZWRnWOPuCpb7o9129YFmrGzvDIzE7" target="_blank"
-   style="display:inline-block; margin-top:16px; padding:10px 24px; background:gold; color:#000; text-decoration:none; font-family:'Montserrat'; font-weight:900; box-shadow:3px 3px #000;">
-  download the mixtape
-</a>
+           style="display:inline-block; margin-top:16px; padding:10px 24px; background:gold; color:#000; text-decoration:none; font-family:'Montserrat'; font-weight:900; box-shadow:3px 3px #000;">
+          download the mixtape
+        </a>
       </div>
     </div>
   </div>
 
   <!-- Chat -->
- <div id="chat-container">
-  <h3 style="color: gold; text-align:center;">THE SIGNAL</h3>
-  <div id="chat-wrapper">
-    <div id="chat-box"></div>
-    <form id="chat-form">
-      <input id="message-input" type="text" placeholder="send a message..." />
-      <button type="submit">Send</button>
-    </form>
+  <div id="chat-container">
+    <h3 style="color: gold; text-align:center;">THE SIGNAL</h3>
+    <div id="chat-wrapper">
+      <div id="chat-box"></div>
+      <form id="chat-form">
+        <input id="message-input" type="text" placeholder="send a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </div>
-</div>
 
   <!-- Combined Script -->
   <script>
@@ -186,6 +186,16 @@
     firebase.auth().signInAnonymously().catch(console.error);
   }
 
+  // Helper: escape HTML in messages
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
   firebase.auth().onAuthStateChanged(user => {
     if (!user) return;
 
@@ -208,42 +218,73 @@
     });
 
     db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snap => {
-     chatBox.innerHTML = '';
-snap.forEach(doc => {
-  const m = doc.data();
-  if (!m.deleted) {
-    const t = m.timestamp?.toDate().toLocaleTimeString() || '';
-    const isYou = m.alias === alias;
-    const reactionEmojis = ["🔥", "❤️", "👀"]; // You can customize this list
-const reactions = m.reactions || {};
-let reactionHTML = "";
+      let buffer = "";
+      const reactionEmojis = ["🔥", "❤️", "👀"];
 
-reactionEmojis.forEach(emoji => {
-  const users = reactions[emoji] || [];
-  const count = users.length;
-  const reacted = users.includes(alias);
-  reactionHTML += `
-    <button class="reaction-button ${reacted ? 'reacted' : ''}" 
-            data-id="${doc.id}" 
-            data-emoji="${emoji}">
-      ${emoji} ${count > 0 ? count : ""}
-    </button>`;
-});
+      snap.forEach(doc => {
+        const m = doc.data();
+        if (m.deleted) return;
 
-chatBox.innerHTML += `
-  <div class="chat-message ${isYou ? 'you' : ''}">
-    <div class="chat-meta">
-      <span class="chat-alias">${m.alias}</span>
-    </div>
-    <div class="chat-text">${m.text}</div>
-    <div class="chat-reactions">${reactionHTML}</div>
-    <div class="chat-timestamp">${t}</div>
-  </div>`;
-  }
-});
+        const t = m.timestamp?.toDate().toLocaleTimeString() || '';
+        const isYou = m.alias === alias;
+
+        const reactions = m.reactions || {};
+        let reactionHTML = "";
+        reactionEmojis.forEach(emoji => {
+          const users = reactions[emoji] || [];
+          const count = users.length;
+          const reacted = users.includes(alias);
+          reactionHTML += `
+            <button class="reaction-button ${reacted ? 'reacted' : ''}"
+                    data-id="${doc.id}"
+                    data-emoji="${emoji}">
+              ${emoji} ${count > 0 ? count : ""}
+            </button>`;
+        });
+
+        buffer += `
+          <div class="chat-message ${isYou ? 'you' : ''}">
+            <div class="chat-meta">
+              <span class="chat-alias">${esc(m.alias)}</span>
+            </div>
+            <div class="chat-text">${esc(m.text)}</div>
+            <div class="chat-reactions">${reactionHTML}</div>
+            <div class="chat-timestamp">${t}</div>
+          </div>`;
+      });
+
+      chatBox.innerHTML = buffer;
       chatBox.scrollTop = chatBox.scrollHeight;
     });
+
+    // ONE delegated click listener for all reaction buttons
+    document.getElementById('chat-box').addEventListener('click', (e) => {
+      const btn = e.target.closest('.reaction-button');
+      if (!btn) return;
+
+      const docId = btn.getAttribute('data-id');
+      const emoji = btn.getAttribute('data-emoji');
+      const userAlias = alias;
+      const messageRef = db.collection('messages').doc(docId);
+
+      firebase.firestore().runTransaction(async (transaction) => {
+        const docSnap = await transaction.get(messageRef);
+        if (!docSnap.exists) return;
+
+        const data = docSnap.data();
+        const reactions = data.reactions || {};
+        const currentUsers = reactions[emoji] || [];
+
+        if (currentUsers.includes(userAlias)) {
+          reactions[emoji] = currentUsers.filter(u => u !== userAlias);
+        } else {
+          reactions[emoji] = [...currentUsers, userAlias];
+        }
+
+        transaction.update(messageRef, { reactions });
+      });
+    });
   });
-</script>
+  </script>
 </body>
 </html>
