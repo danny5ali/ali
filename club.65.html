@@ -25,6 +25,25 @@
     }
   </style>
 </head>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyAbDlpt3HzxOTR1PTFsj6u1N3U3VVSuC4g",
+  authDomain: "club65-a644d.firebaseapp.com",
+  projectId: "club65-a644d",
+  storageBucket: "club65-a644d.firebasestorage.app",
+  messagingSenderId: "472688987440",
+  appId: "1:472688987440:web:188ab245964db7ee638cf5",
+  measurementId: "G-5XWR974X7N"
+};
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+
 <body>
 
   <!-- Back Home -->
