@@ -83,6 +83,15 @@
 
     </div>
   </div>
+  <!-- CLUB.65 CHAT ROOM -->
+<h3 style="color: gold;">THE SIGNAL</h3>
+<div id="chat-box" style="height: 300px; overflow-y: scroll; background: #111; color: gold; padding: 1em; font-family: 'Courier New', monospace; margin-bottom: 1em;"></div>
+
+<form id="chat-form">
+  <input type="text" id="message-input" placeholder="send a message..." style="width: 70%;" />
+  <button type="submit">Send</button>
+</form>
+
 
   <!-- Lock Screen -->
   <div id="lock-screen" class="lock-screen">
@@ -189,7 +198,44 @@
 audioPlayer.addEventListener('ended', nextTrack);
 
   </script>
-  
+  <script>
+  // Prompt user alias
+  let alias = prompt("enter your CLUB.65 alias ():");
+
+  // Sign in anonymously
+  auth.signInAnonymously().then(() => {
+    console.log("signed in anonymously as:", alias);
+  });
+
+  const chatBox = document.getElementById("chat-box");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("message-input");
+
+  // Send message
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!input.value.trim()) return;
+
+    db.collection("messages").add({
+      alias: alias,
+      text: input.value.trim(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    input.value = "";
+  });
+
+  // Load messages in real time
+  db.collection("messages").orderBy("timestamp").onSnapshot(snapshot => {
+    chatBox.innerHTML = "";
+    snapshot.forEach(doc => {
+      const msg = doc.data();
+      chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+</script>
+
 
 </body>
 </html>
