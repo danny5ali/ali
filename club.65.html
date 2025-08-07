@@ -95,11 +95,11 @@
   <div id="chat-container" style="padding:0 24px 24px;">
     <h3 style="color: gold; text-align:center;">THE SIGNAL</h3>
     <div style="max-width:600px; margin:0 auto;">
-      <div id="chat-box" style="height:300px; overflow-y:auto; background:#111; color:gold; padding:1em; font-family:'Courier New'; border:2px solid gold; box-shadow:4px 4px #000;"></div>
+      <div id="chat-wrapper"><div id="chat-box" style="height:300px; overflow-y:auto; background:#111; color:gold; padding:1em; font-family:'Courier New'; border:2px solid gold; box-shadow:4px 4px #000;"></div>
       <form id="chat-form" style="display:flex; margin-top:8px;">
         <input id="message-input" type="text" placeholder="send a message..." style="flex:1; padding:.5em;" />
         <button type="submit">Send</button>
-      </form>
+      </form></div>
     </div>
   </div>
 
@@ -211,11 +211,13 @@ snap.forEach(doc => {
     const t = m.timestamp?.toDate().toLocaleTimeString() || '';
     const isYou = m.alias === alias;
     chatBox.innerHTML += `
-      <div class="chat-message ${isYou ? 'you' : ''}">
-        <span class="chat-alias">${m.alias}</span>
-        <span class="chat-timestamp">${t}</span><br>
-        ${m.text}
-      </div>`;
+  <div class="chat-message ${isYou ? 'you' : ''}">
+    <div class="chat-meta">
+      <span class="chat-alias">${m.alias}</span>
+    </div>
+    <div class="chat-text">${m.text}</div>
+    <div class="chat-timestamp">${t}</div>
+  </div>`;
   }
 });
       chatBox.scrollTop = chatBox.scrollHeight;
