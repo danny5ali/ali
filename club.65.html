@@ -50,16 +50,25 @@
     </a>
   </div>
 
-  <!-- Protected Content -->
+ <!-- Protected Content -->
   <div id="protected-content" style="display: none; padding: 24px;">
     <h1 style="color: gold; text-align: center;">club.65</h1>
     <p style="text-align: center;">by invite only.</p>
-    <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
-    <audio id="audio-player" controls style="width:100%;"></audio>
-    <div class="controls-95" style="margin-top: 12px;">
-      <button onclick="prevTrack()">BACK</button>
-      <button onclick="togglePlay()">PLAY</button>
-      <button onclick="nextTrack()">NEXT</button>
+
+    <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <div class="player-container">
+        <h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
+        <div class="player-art" style="text-align: center; margin-bottom: 20px;">
+          <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
+        </div>
+        <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
+        <audio id="audio-player" controls style="width:100%;"></audio>
+        <div class="controls-95" style="margin-top: 12px;">
+          <button onclick="prevTrack()">BACK</button>
+          <button onclick="togglePlay()">PLAY</button>
+          <button onclick="nextTrack()">NEXT</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -67,12 +76,14 @@
   <div id="lock-screen" class="lock-screen">
     <h2>CLUB.65: access required</h2>
     <p style="max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.5; color: gold;">
-      <strong>CLUB.65</strong> is a private transmission line into ALIWORLD.
+      <strong>CLUB.65</strong> is a private transmission line into ALIWORLD. unreleased music. secret visual streams. a live community signal chat. monthly entry, lifetime invite.
     </p>
     <input type="password" id="password-input" placeholder="enter access code" />
     <button onclick="verifyPassword()">unlock with passcode.</button>
     <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
-      style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000;">
+      style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000; transition: all 0.2s ease-in-out;"
+      onmouseover="this.style.background='#fff'; this.style.color='#000'"
+      onmouseout="this.style.background='gold'; this.style.color='#000'">
       GET ACCESS →
     </a>
   </div>
