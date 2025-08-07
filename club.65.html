@@ -219,7 +219,7 @@
 
     db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snap => {
       let buffer = "";
-      const reactionEmojis = ["🔥", "❤️", "👀"];
+      const reactionEmojis = ["🔥", "🦋", "👀"];
 
       snap.forEach(doc => {
         const m = doc.data();
