@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CLUB.65</title>
   <link rel="stylesheet" href="/style.css">
@@ -16,7 +16,9 @@
       color: gold;
       font-family: 'Montserrat', sans-serif;
       letter-spacing: -0.08em;
+      text-align: center;
     }
+
     input, button {
       margin-top: 1em;
       padding: 0.5em 1em;
@@ -24,154 +26,143 @@
   </style>
 </head>
 <body>
-<div class="back-home-wrapper">
-  <a href="/" style="
-    display: inline-block;
-    color: gold;
-    text-decoration: none;
-    font-weight: 900;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.08em;
-    margin-top: 24px;
-  ">
-    ← Back to Home
-  </a>
-</div>
 
-
-
-
-<div id="protected-content" style="display: none;">
-  <h1 style="color: gold; text-align: center;">club.65</h1>
-  <p style="text-align: center;">by invite only.</p>
-
-  <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-
-    <!-- Secret Album -->
-   <div class="player-container">
-<h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
-
-<audio id="audio-player" controls style="width:100%;">
-  <source src="club.65/5TH SENSE/01 wait4this.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
-
-<div class="controls-95" style="margin-top: 12px;">
-  <button onclick="prevTrack()">⏮</button>
-  <button onclick="togglePlay()">⏯</button>
-  <button onclick="nextTrack()">⏭</button>
-</div>
-
-<script>
-  const tracks = [
-    "club.65/5TH SENSE/01 wait4this.mp3",
-    "club.65/5TH SENSE/02 SOLOW.mp3",
-    "club.65/5TH SENSE/03 SO SICK.mp3",
-    "club.65/5TH SENSE/04 THE DARK KNIGHT.mp3",
-    "club.65/5TH SENSE/05 LETMEGO.mp3",
-    "club.65/5TH SENSE/06 REAL BIG.m4a"
-  ];
-
-  let currentTrack = 0;
-  const audioPlayer = document.getElementById("audio-player");
-
-  function loadTrack(index) {
-    audioPlayer.src = tracks[index];
-    audioPlayer.load();
-    audioPlayer.play();
-  }
-
-  function togglePlay() {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-    } else {
-      audioPlayer.pause();
-    }
-  }
-
-  function nextTrack() {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    loadTrack(currentTrack);
-  }
-
-  function prevTrack() {
-    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-    loadTrack(currentTrack);
-  }
-
-  // Optional: Auto-skip to next when current finishes
-  audioPlayer.addEventListener('ended', nextTrack);
-</script>
-
-
-
-    <!-- Secret Film -->
-   <div class="player-container">
-  <h3>short film: “THE DUFFLE”</h3>
-  <video width="100%" controls>
-    <source src="/videos/frequency.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
-
+  <!-- Back Home -->
+  <div class="back-home-wrapper" style="text-align: center; margin-top: 20px;">
+    <a href="/" style="color: gold; text-decoration: none; font-weight: 900; font-family: 'Montserrat', sans-serif; letter-spacing: -0.08em;">
+      ← Back to Home
+    </a>
   </div>
-</div>
 
-</div>
+  <!-- Protected Content -->
+  <div id="protected-content" style="display: none; padding: 24px;">
 
-<div id="lock-screen" class="lock-screen">
-  <h2>CLUB.65: access required</h2>
-  <input type="password" id="password-input" placeholder="Enter access code" />
-  <button onclick="verifyPassword()">Unlock</button>
-<a 
-  href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" 
-  target="_blank" 
-  style="
-    display: inline-block;
-    margin-top: 16px;
-    padding: 10px 24px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 0.95rem;
-    letter-spacing: -0.08em;
-    color: #000;
-    background: gold;
-    border: 2px solid #000;
-    text-decoration: none;
-    box-shadow: 3px 3px #000;
-    transition: all 0.2s ease-in-out;
-  "
-  onmouseover="this.style.background='#fff'; this.style.color='#000'"
-  onmouseout="this.style.background='gold'; this.style.color='#000'"
->
-  GET ACCESS →
-</a>
+    <h1 style="color: gold; text-align: center;">club.65</h1>
+    <p style="text-align: center;">by invite only.</p>
 
-</div>
+    <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
 
-<script>
-  const correctPassword = "AL1WORLD2025";
+      <!-- Secret Album -->
+      <div class="player-container">
+        <h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
 
-  function unlock() {
-    document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('protected-content').style.display = 'block';
-  }
+        <audio id="audio-player" controls style="width:100%;">
+          <source src="club.65/5TH SENSE/01 wait4this.mp3" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
 
-  function verifyPassword() {
-    const input = document.getElementById('password-input').value;
-    if (input === correctPassword) {
-      unlock();
-    } else {
-      alert('Incorrect password.');
+        <div class="controls-95" style="margin-top: 12px;">
+          <button onclick="prevTrack()">⏮</button>
+          <button onclick="togglePlay()">⏯</button>
+          <button onclick="nextTrack()">⏭</button>
+        </div>
+      </div>
+
+      <!-- Secret Film -->
+      <div class="player-container">
+        <h3 style="color: gold;">short film: “THE DUFFLE”</h3>
+        <video width="100%" controls>
+          <source src="/videos/frequency.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lock Screen -->
+  <div id="lock-screen" class="lock-screen">
+    <h2>CLUB.65: access required</h2>
+    <input type="password" id="password-input" placeholder="Enter access code" />
+    <button onclick="verifyPassword()">Unlock</button>
+    <a 
+      href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" 
+      target="_blank" 
+      style="
+        display: inline-block;
+        margin-top: 16px;
+        padding: 10px 24px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 0.95rem;
+        letter-spacing: -0.08em;
+        color: #000;
+        background: gold;
+        border: 2px solid #000;
+        text-decoration: none;
+        box-shadow: 3px 3px #000;
+        transition: all 0.2s ease-in-out;
+      "
+      onmouseover="this.style.background='#fff'; this.style.color='#000'"
+      onmouseout="this.style.background='gold'; this.style.color='#000'"
+    >
+      GET ACCESS →
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const correctPassword = "AL1WORLD2025";
+
+    function unlock() {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('protected-content').style.display = 'block';
     }
-  }
 
-  // Allow Stripe redirect to auto-unlock
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('access') === 'granted') {
-    unlock();
-  }
+    function verifyPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === correctPassword) {
+        unlock();
+      } else {
+        alert('Incorrect password.');
+      }
+    }
+
+    // Allow Stripe redirect to auto-unlock
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('access') === 'granted') {
+      unlock();
+    }
+
+    // Audio logic
+    const tracks = [
+      "club.65/5TH SENSE/01 wait4this.mp3",
+      "club.65/5TH SENSE/02 SOLOW.mp3",
+      "club.65/5TH SENSE/03 SO SICK.mp3",
+      "club.65/5TH SENSE/04 THE DARK KNIGHT.mp3",
+      "club.65/5TH SENSE/05 LETMEGO.mp3",
+      "club.65/5TH SENSE/06 REAL BIG.m4a"
+    ];
+
+    let currentTrack = 0;
+    const audioPlayer = document.getElementById("audio-player");
+
+    function loadTrack(index) {
+      audioPlayer.src = tracks[index];
+      audioPlayer.load();
+      audioPlayer.play();
+    }
+
+    function togglePlay() {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    }
+
+    function nextTrack() {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    }
+
+    function prevTrack() {
+      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      loadTrack(currentTrack);
+    }
+
+    audioPlayer.addEventListener('ended', nextTrack);
+  </script>
 
 </body>
 </html>
