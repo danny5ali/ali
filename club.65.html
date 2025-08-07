@@ -114,13 +114,30 @@
     </a>
   </div>
    <!-- CLUB.65 CHAT ROOM -->
-<h3 style="color: gold;">THE SIGNAL</h3>
-<div id="chat-box" style="height: 300px; overflow-y: scroll; background: #111; color: gold; padding: 1em; font-family: 'Courier New', monospace; margin-bottom: 1em;"></div>
+<div id="chat-container" style="display: none;">
+  <h3 style="color: gold;">THE SIGNAL</h3>
+<!-- CHAT BOX -->
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <div id="chat-box" style="
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  overflow-y: auto;
+  background: #111;
+  color: gold;
+  padding: 1em;
+  font-family: 'Courier New', monospace;
+  margin: 20px auto;
+  border: 2px solid gold;
+  box-shadow: 4px 4px #000;
+"></div>
 
 <form id="chat-form">
   <input type="text" id="message-input" placeholder="send a message..." style="width: 70%;" />
   <button type="submit">Send</button>
 </form>
+  </div>
+    </div>
 
   <!-- JavaScript -->
   <script>
@@ -198,11 +215,17 @@ audioPlayer.addEventListener('ended', nextTrack);
 
   </script>
   <script>
-  // Prompt user alias
-  let alias = prompt("enter your CLUB.65 alias ():");
+ function unlock() {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('protected-content').style.display = 'block';
+  document.getElementById("chat-container").style.display = "block";
+
+
+  // FIREBASE CHAT LOGIC (only runs after unlock)
+  const alias = prompt("enter your CLUB.65 alias ():");
 
   // Sign in anonymously
-  auth.signInAnonymously().then(() => {
+  firebase.auth().signInAnonymously().then(() => {
     console.log("signed in anonymously as:", alias);
   });
 
@@ -233,7 +256,8 @@ audioPlayer.addEventListener('ended', nextTrack);
     });
     chatBox.scrollTop = chatBox.scrollHeight;
   });
-</script>
+}
+
 
 
 </body>
