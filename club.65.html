@@ -28,7 +28,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyAbDlpt3HzxOTR1PTFsj6u1N3U3VVSuC4g",
@@ -45,8 +44,6 @@
 </head>
 
 <body>
-
-  <!-- Back Home -->
   <div class="back-home-wrapper" style="text-align: center; margin-top: 20px;">
     <a href="/" style="color: gold; text-decoration: none; font-weight: 900; font-family: 'Montserrat', sans-serif; letter-spacing: -0.08em;">
       ← Back to Home
@@ -57,21 +54,12 @@
   <div id="protected-content" style="display: none; padding: 24px;">
     <h1 style="color: gold; text-align: center;">club.65</h1>
     <p style="text-align: center;">by invite only.</p>
-
-    <div class="vault-grid" style="margin-top: 2em; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-      <div class="player-container">
-        <h3 style="color: gold;">club.65 exclusive mixtape: "5TH SENSE"</h3>
-        <div class="player-art" style="text-align: center; margin-bottom: 20px;">
-          <img src="/win95_icons/5TH SENSE.png" alt="5TH SENSE Cover" style="max-width: 240px; width: 100%; border: 2px solid gold; box-shadow: 2px 2px #000;">
-        </div>
-        <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
-        <audio id="audio-player" controls style="width:100%;"></audio>
-        <div class="controls-95" style="margin-top: 12px;">
-          <button onclick="prevTrack()">BACK</button>
-          <button onclick="togglePlay()">PLAY</button>
-          <button onclick="nextTrack()">NEXT</button>
-        </div>
-      </div>
+    <div id="track-title" style="margin: 10px 0; color: gold; font-weight: bold;"></div>
+    <audio id="audio-player" controls style="width:100%;"></audio>
+    <div class="controls-95" style="margin-top: 12px;">
+      <button onclick="prevTrack()">BACK</button>
+      <button onclick="togglePlay()">PLAY</button>
+      <button onclick="nextTrack()">NEXT</button>
     </div>
   </div>
 
@@ -79,14 +67,12 @@
   <div id="lock-screen" class="lock-screen">
     <h2>CLUB.65: access required</h2>
     <p style="max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.5; color: gold;">
-      <strong>CLUB.65</strong> is a private transmission line into ALIWORLD. unreleased music. secret visual streams. a live community signal chat. monthly entry, lifetime invite.
+      <strong>CLUB.65</strong> is a private transmission line into ALIWORLD.
     </p>
     <input type="password" id="password-input" placeholder="enter access code" />
     <button onclick="verifyPassword()">unlock with passcode.</button>
     <a href="https://buy.stripe.com/eVq8wP1FO4f2aX3blf4ZG0l" target="_blank"
-      style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000; transition: all 0.2s ease-in-out;"
-      onmouseover="this.style.background='#fff'; this.style.color='#000'"
-      onmouseout="this.style.background='gold'; this.style.color='#000'">
+      style="margin-top: 16px; padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem; letter-spacing: -0.08em; color: #000; background: gold; border: 2px solid #000; text-decoration: none; box-shadow: 3px 3px #000;">
       GET ACCESS →
     </a>
   </div>
@@ -103,125 +89,8 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script>
     const correctPassword = "AL1WORLD2025";
-
-function unlock() {
-  document.getElementById('lock-screen').style.display = 'none';
-  document.getElementById('protected-content').style.display = 'block';
-  document.getElementById('chat-container').style.display = 'block';
-
-  if (!localStorage.getItem('club65_alias')) {
-    const alias = prompt("enter your CLUB.65 alias ():") || "anon";
-    localStorage.setItem('club65_alias', alias);
-  }
-
-  // Sign in then log alias
-  firebase.auth().signInAnonymously().then(() => {
-    const alias = localStorage.getItem('club65_alias') || "anon";
-    console.log("signed in anonymously as:", alias);
-  });
-}
-
-     // === Always set up chat listener ===
-firebase.auth().onAuthStateChanged(() => {
-  const alias = localStorage.getItem('club65_alias') || "anon";
-
-  const chatBox = document.getElementById("chat-box");
-  const form = document.getElementById("chat-form");
-  const input = document.getElementById("message-input");
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!input.value.trim()) return;
-
-      db.collection("messages").add({
-        alias: alias,
-        text: input.value.trim(),
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      });
-
-      input.value = "";
-    });
-
-    // Real-time + historical messages
-    db.collection("messages")
-      .orderBy("timestamp")
-      .onSnapshot(snapshot => {
-        chatBox.innerHTML = "";
-        snapshot.forEach(doc => {
-          const msg = doc.data();
-          if (!msg.deleted) {
-            chatBox.innerHTML += `<p><strong>${msg.alias}:</strong> ${msg.text}</p>`;
-          }
-        });
-        chatBox.scrollTop = chatBox.scrollHeight;
-      });
-  }
-});
-
-      const chatBox = document.getElementById("chat-box");
-      const form = document.getElementById("chat-form");
-      const input = document.getElementById("message-input");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!input.value.trim()) return;
-
-        db.collection("messages").add({
-          alias: alias,
-          text: input.value.trim(),
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        });
-        input.value = "";
-      });
-
-     db.collection("messages")
-  .orderBy("timestamp", "asc")
-  .onSnapshot(snapshot => {
-    chatBox.innerHTML = ""; // Reset
-    snapshot.forEach(doc => {
-      const msg = doc.data();
-      const date = msg.timestamp?.toDate().toLocaleString() || "";
-      const alias = msg.alias || "anon";
-      const text = msg.text || "";
-      chatBox.innerHTML += `
-        <p style="margin-bottom: 8px;">
-          <strong>${alias}:</strong> ${text}
-          <br>
-          <span style="font-size: 0.7rem; color: gray;">${date}</span>
-        </p>`;
-    });
-    chatBox.scrollTop = chatBox.scrollHeight;
-  });
-    }
-
-    function verifyPassword() {
-  const input = document.getElementById('password-input').value;
-  if (input === correctPassword) {
-    localStorage.setItem('club65_unlocked', 'true'); // 🛠️ This line was missing
-    unlock();
-  } else {
-    alert('Incorrect password.');
-  }
-}
-
-    // Enable "Enter" key to trigger password check
-    document.getElementById("password-input").addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        verifyPassword();
-      }
-    });
-
-    // Auto-unlock if localStorage shows user already passed access
-    if (localStorage.getItem('club65_unlocked') === 'true' || new URLSearchParams(window.location.search).get('access') === 'granted') {
-      unlock();
-    }
-
-    // AUDIO LOGIC
     const tracks = [
       { title: "WAIT4THIS", file: "/5TH SENSE/01 wait4this.mp3" },
       { title: "SOLOW", file: "/5TH SENSE/02 SOLOW.mp3" },
@@ -263,6 +132,69 @@ firebase.auth().onAuthStateChanged(() => {
     }
 
     audioPlayer.addEventListener('ended', nextTrack);
+
+    function unlock() {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('protected-content').style.display = 'block';
+      document.getElementById('chat-container').style.display = 'block';
+      localStorage.setItem('club65_unlocked', 'true');
+
+      let alias = localStorage.getItem('club65_alias');
+      if (!alias) {
+        alias = prompt("enter your CLUB.65 alias ():") || "anon";
+        localStorage.setItem('club65_alias', alias);
+      }
+
+      firebase.auth().signInAnonymously().then(() => {
+        const form = document.getElementById("chat-form");
+        const input = document.getElementById("message-input");
+        const chatBox = document.getElementById("chat-box");
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!input.value.trim()) return;
+
+          db.collection("messages").add({
+            alias: alias,
+            text: input.value.trim(),
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          input.value = "";
+        });
+
+        db.collection("messages").orderBy("timestamp").onSnapshot(snapshot => {
+          chatBox.innerHTML = "";
+          snapshot.forEach(doc => {
+            const msg = doc.data();
+            if (!msg.deleted) {
+              const date = msg.timestamp?.toDate().toLocaleString() || "";
+              chatBox.innerHTML += `<p style="margin-bottom: 8px;"><strong>${msg.alias}:</strong> ${msg.text}<br><span style="font-size: 0.7rem; color: gray;">${date}</span></p>`;
+            }
+          });
+          chatBox.scrollTop = chatBox.scrollHeight;
+        });
+      });
+    }
+
+    function verifyPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === correctPassword) {
+        unlock();
+      } else {
+        alert('Incorrect password.');
+      }
+    }
+
+    document.getElementById("password-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        verifyPassword();
+      }
+    });
+
+    if (localStorage.getItem('club65_unlocked') === 'true' || new URLSearchParams(window.location.search).get('access') === 'granted') {
+      unlock();
+    }
   </script>
 </body>
 </html>
