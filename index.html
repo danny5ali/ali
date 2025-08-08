@@ -10,37 +10,24 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       background: black;
       color: white;
       font-family: 'Montserrat', sans-serif;
-      height: 100vh;
+    }
+
+    body {
       display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    main {
-      text-align: center;
-      max-width: 480px;
-      width: 100%;
-      padding: 1rem;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-      font-weight: 900;
-      margin-top: 0.5rem;
-    }
-
-    .highlight {
-      color: #FFD700;
+      flex-direction: column;
     }
 
     .club65-button-container {
-      margin-bottom: 1rem;
+      padding: 1rem;
+      text-align: center;
+      background: black;
     }
 
     .club65-button {
@@ -51,10 +38,32 @@
       padding: 12px 24px;
       text-decoration: none;
       box-shadow: 2px 2px #000;
+      font-size: 1rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 900;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .highlight {
+      color: #FFD700;
     }
 
     .countdown-label {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       font-weight: bold;
       letter-spacing: 0.05em;
     }
@@ -63,17 +72,18 @@
       font-size: 2rem;
       font-weight: 900;
       margin-bottom: 2rem;
+      color: white;
     }
 
     .beehiiv-container {
-      margin-top: 2rem;
       display: flex;
       justify-content: center;
+      width: 100%;
+      max-width: 534px;
     }
 
     .beehiiv-embed {
       width: 100%;
-      max-width: 534px;
       height: 364px;
       border: none;
       background: transparent;
@@ -92,9 +102,25 @@
       color: #aaa;
       font-style: italic;
       font-size: 0.85rem;
-      margin-top: 0.5rem;
+      text-align: center;
+      margin: 2rem auto 1rem;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .countdown-timer {
+        font-size: 1.5rem;
+      }
+
+      .beehiiv-embed {
+        height: 340px;
+      }
     }
   </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const countdown = document.getElementById('countdown');
@@ -112,14 +138,14 @@
   </script>
   <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
+
 <body>
+  <div class="club65-button-container">
+    <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
+  </div>
+
   <main>
-    <div class="club65-button-container">
-      <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
-    </div>
-
     <h1>THE WORLD IS <span class="highlight">YOURS.</span></h1>
-
     <p class="countdown-label">THE COUNTDOWN BEGINS</p>
     <div id="countdown" class="countdown-timer">--D --H --M --S</div>
 
