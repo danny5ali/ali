@@ -7,150 +7,140 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"/>
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
-      background: #000;
-      color: gold;
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
       font-family: 'Montserrat', sans-serif;
-    }
-
-    .club65-button-container {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .club65-button {
-      background: gold;
-      color: black;
-      padding: 10px 24px;
-      font-weight: 900;
-      text-decoration: none;
-      box-shadow: 3px 3px black;
-      letter-spacing: -0.08em;
-    }
-
-    main {
-      height: 100%;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 20px;
     }
 
-    .centered-content {
+    main {
+      text-align: center;
       max-width: 480px;
       width: 100%;
+      padding: 1rem;
     }
 
-    .headline {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      color: gold;
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 900;
+      margin-top: 0.5rem;
+    }
+
+    .highlight {
+      color: #FFD700;
+    }
+
+    .club65-button-container {
+      margin-bottom: 1rem;
+    }
+
+    .club65-button {
+      display: inline-block;
+      background: #FFD700;
+      color: black;
+      font-weight: 900;
+      padding: 12px 24px;
+      text-decoration: none;
+      box-shadow: 2px 2px #000;
     }
 
     .countdown-label {
-      font-size: 14px;
-      color: white;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-top: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
     }
 
     .countdown-timer {
-      font-size: 32px;
-      font-weight: bold;
-      color: white;
-      letter-spacing: 4px;
-      margin-bottom: 36px;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+    }
+
+    .beehiiv-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
     }
 
     .beehiiv-embed {
       width: 100%;
-      height: 250px;
-      background: transparent;
+      max-width: 534px;
+      height: 364px;
       border: none;
-      margin-bottom: 24px;
-    }
-
-    .footer-text {
-      margin-top: 24px;
-      font-size: 12px;
-      color: #aaa;
-      font-style: italic;
+      background: transparent;
     }
 
     .social-icons {
-      margin-top: 20px;
+      margin-top: 3rem;
     }
 
     .social-icons img {
-      width: 28px;
-      height: 28px;
-      filter: brightness(0) invert(1);
-      transition: transform 0.2s ease;
+      width: 24px;
+      height: 24px;
     }
 
-    .social-icons img:hover {
-      transform: scale(1.1);
+    .footer-text {
+      color: #aaa;
+      font-style: italic;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
     }
   </style>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const countdown = document.getElementById('countdown');
       const end = new Date("August 18, 2025 00:00:00").getTime();
       setInterval(() => {
         const diff = end - Date.now();
-        if (diff <= 0) {
-          countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
-          return;
-        }
+        if (diff <= 0) return countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
         const d = Math.floor(diff / 86400000),
-              h = Math.floor((diff % 86400000) / 3600000),
-              m = Math.floor((diff % 3600000) / 60000),
-              s = Math.floor((diff % 60000) / 1000);
+              h = Math.floor((diff % 86400000)/3600000),
+              m = Math.floor((diff%3600000)/60000),
+              s = Math.floor((diff%60000)/1000);
         countdown.innerHTML = `${d}D ${h}H ${m}M ${s}S`;
       }, 1000);
     });
   </script>
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
-
 <body>
-  <div class="club65-button-container">
-    <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
-  </div>
-
   <main>
-    <div class="centered-content">
-      <h1 class="headline">THE WORLD IS YOURS.</h1>
-      <p class="countdown-label">THE COUNTDOWN BEGINS</p>
-      <div id="countdown" class="countdown-timer">--D --H --M --S</div>
-
-      <!-- Beehiiv Embed -->
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
-              class="beehiiv-embed"
-              frameborder="0"
-              scrolling="no">
-      </iframe>
-
-      <div class="social-icons">
-        <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
-        </a>
-      </div>
-
-      <p class="footer-text">you felt it too, right?</p>
+    <div class="club65-button-container">
+      <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
     </div>
+
+    <h1>THE WORLD IS <span class="highlight">YOURS.</span></h1>
+
+    <p class="countdown-label">THE COUNTDOWN BEGINS</p>
+    <div id="countdown" class="countdown-timer">--D --H --M --S</div>
+
+    <div class="beehiiv-container">
+      <iframe 
+        src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
+        class="beehiiv-embed"
+        data-test-id="beehiiv-embed"
+        frameborder="0"
+        scrolling="no"
+        style="border-radius: 0; box-shadow: none;">
+      </iframe>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
+      </a>
+    </div>
+
+    <p class="footer-text">you felt it too, right?</p>
   </main>
 </body>
 </html>
