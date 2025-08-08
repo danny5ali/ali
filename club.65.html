@@ -80,7 +80,7 @@
     </button>
   </div>
 </div>
-
+<p id="signed-in-as" style="color: gold; text-align: center; font-family: 'Courier New', monospace; margin-top: 16px;"></p>
   <!-- Protected Content -->
   <div id="protected-content" style="padding:24px;">
     <h1 style="color: gold; text-align: center;">club.65</h1>
@@ -189,18 +189,24 @@
   }
 
   function doUnlock() {
-    document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('protected-content').style.display = 'block';
-    document.getElementById('chat-container').style.display = 'block';
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('protected-content').style.display = 'block';
+  document.getElementById('chat-container').style.display = 'block';
 
-    let alias = localStorage.getItem('club65_alias');
-    if (!alias) {
-      alias = prompt('enter your CLUB.65 alias ():') || 'anon';
-      localStorage.setItem('club65_alias', alias);
-    }
-
-    firebase.auth().signInAnonymously().catch(console.error);
+  let alias = localStorage.getItem('club65_alias');
+  if (!alias) {
+    alias = prompt('enter your CLUB.65 alias ():') || 'anon';
+    localStorage.setItem('club65_alias', alias);
   }
+
+  // Set "signed in as" text
+  const signedInEl = document.getElementById('signed-in-as');
+  if (signedInEl) {
+    signedInEl.textContent = `signed in as: ${alias}`;
+  }
+
+  firebase.auth().signInAnonymously().catch(console.error);
+}
 
   // Helper: escape HTML in messages
   function esc(str) {
