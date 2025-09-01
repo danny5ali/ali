@@ -1,4 +1,4 @@
-er<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -55,24 +55,27 @@ er<!DOCTYPE html>
       font-size: 2.25rem;
       font-weight: 900;
       margin-top: 0.5rem;
-      margin-bottom: 0.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .highlight {
       color: #FFD700;
     }
 
-    .countdown-label {
-      margin-top: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 0.05em;
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      margin: 0 auto 2rem;
     }
 
-    .countdown-timer {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      color: white;
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
     }
 
     .beehiiv-container {
@@ -111,31 +114,12 @@ er<!DOCTYPE html>
         font-size: 1.8rem;
       }
 
-      .countdown-timer {
-        font-size: 1.5rem;
-      }
-
       .beehiiv-embed {
         height: 340px;
       }
     }
   </style>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const countdown = document.getElementById('countdown');
-      const end = new Date("September 1, 2025 21:00:00").getTime();
-      setInterval(() => {
-        const diff = end - Date.now();
-        if (diff <= 0) return countdown.innerHTML = "THE SIGNAL HAS BEEN RECEIVED.";
-        const d = Math.floor(diff / 86400000),
-              h = Math.floor((diff % 86400000)/3600000),
-              m = Math.floor((diff%3600000)/60000),
-              s = Math.floor((diff%60000)/1000);
-        countdown.innerHTML = `${d}D ${h}H ${m}M ${s}S`;
-      }, 1000);
-    });
-  </script>
   <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
 
@@ -146,9 +130,18 @@ er<!DOCTYPE html>
 
   <main>
     <h1>THE WORLD IS <span class="highlight">YOURS.</span></h1>
-    <p class="countdown-label">THE COUNTDOWN BEGINS</p>
-    <div id="countdown" class="countdown-timer">--D --H --M --S</div>
 
+    <!-- YouTube Embed -->
+    <div class="video-container">
+      <iframe 
+        src="https://youtu.be/pcVfHzZ9aLA?si=bEP4-qXHr-seleCX"
+        title="YouTube video player"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Beehiiv Embed -->
     <div class="beehiiv-container">
       <iframe 
         src="https://subscribe-forms.beehiiv.com/2ec1988e-b4e5-49e6-9636-dc7328b372ff"
