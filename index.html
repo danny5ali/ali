@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BETTER LUCK NEXT TIME.</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"/>
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -24,23 +23,6 @@
       flex-direction: column;
     }
 
-    .club65-button-container {
-      padding: 1rem;
-      text-align: center;
-      background: black;
-    }
-
-    .club65-button {
-      display: inline-block;
-      background: #FFD700;
-      color: black;
-      font-weight: 900;
-      padding: 12px 24px;
-      text-decoration: none;
-      box-shadow: 2px 2px #000;
-      font-size: 1rem;
-    }
-
     main {
       flex: 1;
       display: flex;
@@ -48,48 +30,67 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
     }
 
     h1 {
       font-size: 2.25rem;
       font-weight: 900;
-      margin-top: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .highlight {
       color: #FFD700;
     }
 
-    .video-container {
-      position: relative;
+    /* PURCHASE CTA */
+    .purchase-container {
       width: 100%;
-      max-width: 800px;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      margin: 0 auto 2rem;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      padding: 32px 24px;
+      border: 2px solid #FFD700;
+      box-shadow: 4px 4px #000;
+      background: #000;
     }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
+    .purchase-button {
+      display: block;
+      width: 100%;
+      background: #FFD700;
+      color: #000;
+      font-weight: 900;
+      font-size: 1.1rem;
+      padding: 16px 20px;
+      text-decoration: none;
+      box-shadow: 3px 3px #000;
+      letter-spacing: -0.04em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .beehiiv-container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      max-width: 534px;
+    .purchase-button:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px #000;
     }
 
-    .beehiiv-embed {
-      width: 100%;
-      height: 364px;
-      border: none;
-      background: transparent;
+    .purchase-subtext {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #aaa;
+      letter-spacing: 0.03em;
+    }
+
+    /* JOIN SIGNAL */
+    .club65-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #FFD700;
+      color: black;
+      font-weight: 900;
+      padding: 12px 24px;
+      text-decoration: none;
+      box-shadow: 2px 2px #000;
+      font-size: 1rem;
     }
 
     .social-icons {
@@ -105,8 +106,7 @@
       color: #aaa;
       font-style: italic;
       font-size: 0.85rem;
-      text-align: center;
-      margin: 2rem auto 1rem;
+      margin-top: 2rem;
     }
 
     @media (max-width: 480px) {
@@ -114,8 +114,12 @@
         font-size: 1.8rem;
       }
 
-      .beehiiv-embed {
-        height: 340px;
+      .purchase-container {
+        padding: 28px 18px;
+      }
+
+      .purchase-button {
+        font-size: 1rem;
       }
     }
   </style>
@@ -124,40 +128,46 @@
 </head>
 
 <body>
-<script src="https://embed.laylo.com/laylo-sdk.js"></script>
-<iframe 
-id="laylo-drop-be98d9ed-874c-40bf-a399-06cdd5df864f"
-frameborder="0"
-scrolling="no"
-allow="web-share"
-allowtransparency="true"
-style="width: 1px; min-width: 100%; max-width: 1000px"
-src= "https://embed.laylo.com?dropId=be98d9ed-874c-40bf-a399-06cdd5df864f&color=b6bdce&minimal=false&theme=dark&background=solid&customTitle=get%20early%20access%20%F0%9F%A6%8B">
-</iframe>
+
+  <!-- Laylo Embed -->
+  <script src="https://embed.laylo.com/laylo-sdk.js"></script>
+  <iframe
+    id="laylo-drop-be98d9ed-874c-40bf-a399-06cdd5df864f"
+    frameborder="0"
+    scrolling="no"
+    allow="web-share"
+    allowtransparency="true"
+    style="width: 1px; min-width: 100%; max-width: 1000px"
+    src="https://embed.laylo.com?dropId=be98d9ed-874c-40bf-a399-06cdd5df864f&color=b6bdce&minimal=false&theme=dark&background=solid&customTitle=get%20early%20access%20%F0%9F%A6%8B">
+  </iframe>
+
   <main>
     <h1>THE WORLD IS <span class="highlight">YOURS.</span></h1>
 
-   <!-- YouTube Embed -->
-<div class="video-container">
-  <iframe
-    src="https://www.youtube.com/embed/pcVfHzZ9aLA?modestbranding=1&rel=0&playsinline=1"
-    title="YouTube video player"
-    frameborder="0"
-    allow="autoplay; encrypted-media; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
-</div>
- <div class="club65-button-container">
+    <!-- PURCHASE BLOCK -->
+    <div class="purchase-container">
+      <a
+        href="https://YOUR-PURCHASE-LINK-HERE"
+        target="_blank"
+        class="purchase-button">
+        PURCHASE 'BETTER LUCK NEXT TIME'
+      </a>
+      <div class="purchase-subtext">
+        exclusive early access
+      </div>
+    </div>
+
+    <!-- JOIN CLUB -->
     <a href="/club.65" class="club65-button">JOIN THE SIGNAL.</a>
-  </div>
+
     <div class="social-icons">
       <a href="https://instagram.com/officialdannyali" target="_blank" aria-label="Instagram">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram"/>
       </a>
     </div>
 
     <p class="footer-text">you felt it too, right?</p>
   </main>
+
 </body>
 </html>
