@@ -39,9 +39,7 @@
       margin-bottom: 2rem;
     }
 
-    .highlight {
-      color: #FFD700;
-    }
+    .highlight { color: #FFD700; }
 
     /* PURCHASE CTA */
     .purchase-container {
@@ -52,6 +50,24 @@
       border: 2px solid #FFD700;
       box-shadow: 4px 4px #000;
       background: #000;
+      overflow: hidden; /* prevents any bleed */
+    }
+
+    /* ✅ FIX: IMAGE FITS BOX */
+    .album-art {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 16px;
+      border: 2px solid #FFD700;
+      background: #000;
+
+      /* show entire image, no cropping */
+      object-fit: contain;
+
+      /* safety clamp so it never dominates the card */
+      max-height: 320px;
     }
 
     .purchase-button {
@@ -93,13 +109,12 @@
       font-size: 1rem;
     }
 
-    .social-icons {
-      margin-top: 3rem;
-    }
+    .social-icons { margin-top: 3rem; }
 
     .social-icons img {
       width: 24px;
       height: 24px;
+      filter: invert(1);
     }
 
     .footer-text {
@@ -110,17 +125,24 @@
     }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8rem;
-      }
+      h1 { font-size: 1.8rem; }
 
       .purchase-container {
-        padding: 28px 18px;
+        padding: 22px 16px;
+        max-width: 92%;
+      }
+
+      .album-art {
+        max-height: 240px; /* tighter on mobile */
+        margin-bottom: 14px;
       }
 
       .purchase-button {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 12px 14px;
       }
+
+      .purchase-subtext { font-size: 0.75rem; }
     }
   </style>
 
@@ -128,7 +150,6 @@
 </head>
 
 <body>
-
   <!-- Laylo Embed -->
   <script src="https://embed.laylo.com/laylo-sdk.js"></script>
   <iframe
@@ -144,24 +165,22 @@
   <main>
     <h1>THE WORLD IS <span class="highlight">YOURS.</span></h1>
 
-  <!-- PURCHASE BLOCK -->
+    <!-- PURCHASE BLOCK -->
     <div class="purchase-container">
-
-      <!-- Album Image -->
       <img
         src="win95_icons/dannyali2.5 copy.PNG"
         alt="BETTER LUCK NEXT TIME Album Art"
         class="album-art"
       />
+
       <a
         href="https://untitled.stream/buy/project/kwPzSoxARzYEBs8GqfZYw"
         target="_blank"
         class="purchase-button">
         PURCHASE 'BETTER LUCK NEXT TIME'
       </a>
-      <div class="purchase-subtext">
-        exclusive early access
-      </div>
+
+      <div class="purchase-subtext">exclusive early access</div>
     </div>
 
     <!-- JOIN CLUB -->
@@ -175,6 +194,5 @@
 
     <p class="footer-text">you felt it too, right?</p>
   </main>
-
 </body>
 </html>
