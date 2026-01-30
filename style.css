@@ -1,9 +1,11 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BASE */
 body {
   background: #000;
   color: gold;
@@ -11,7 +13,6 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   padding: 80px 16px 40px;
   text-align: center;
@@ -24,391 +25,185 @@ body {
   margin: 0 auto;
 }
 
-input,
-button,
-input:focus,
-button:focus {
+/* DEFAULT INPUTS (non-chat) */
+input:not(#message-input),
+button:not(#chat-form button) {
   margin-top: 1em;
   padding: 0.75em 1em;
   font-size: 1rem;
   width: 100%;
   max-width: 300px;
-  color: black;
   background: gold;
+  color: black;
   border: none;
-  outline: none;
-  appearance: none;
   font-weight: 900;
+  appearance: none;
 }
 
+/* MAIN */
 main {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 0 16px;
+  align-items: center;
 }
 
+/* TOP BUTTON */
 .club65-button-container {
   position: fixed;
   top: 20px;
   left: 0;
   right: 0;
-  z-index: 1000;
   display: flex;
   justify-content: center;
+  z-index: 1000;
 }
 
 .club65-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.08em;
-  text-decoration: none;
-  color: black;
   background: gold;
-  padding: 10px 24px;
-  border: none;
-  box-shadow: 3px 3px black;
-  font-size: 0.85rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.club65-button:hover {
-  background: #fff200;
-}
-
-.countdown-label {
-  font-size: 13px;
-  color: #ff0000;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-}
-
-.countdown-timer {
-  font-size: 30px;
-  font-weight: bold;
-  color: #ff0000;
-  letter-spacing: 4px;
-  margin-bottom: 36px;
-}
-
-.custom-beehiiv-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.custom-beehiiv-form input[type="email"] {
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ff0000;
-  color: #fff;
-  background: #111;
-  letter-spacing: -0.08em;
-}
-
-.custom-beehiiv-form button {
-  padding: 12px;
-  font-size: 16px;
+  color: black;
   font-weight: 900;
-  background: #ff0000;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  letter-spacing: -0.08em;
+  padding: 10px 24px;
+  box-shadow: 3px 3px black;
+  text-decoration: none;
+  font-size: 0.85rem;
 }
 
-.custom-beehiiv-form button:hover {
-  background: #fff;
-  color: #ff0000;
-  transition: 0.2s;
-}
-
-.footer-text {
-  margin-top: 32px;
-  font-size: 12px;
-  color: #888;
-  font-style: italic;
-}
-
+/* SOCIAL */
 .social-icons {
   margin-top: 30px;
 }
 
 .social-icons img {
   width: 32px;
-  height: 32px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.2s ease;
+  filter: invert(1);
 }
 
-.social-icons img:hover {
-  transform: scale(1.15);
-}
-
-.vault-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  margin-top: 32px;
-}
-
-.vault-item {
-  background: #111;
-  border: 2px solid gold;
-  padding: 16px;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.08em;
-}
-
-.vault-item img {
-  width: 100%;
-  border: 2px solid #444;
-}
-
-.vault-item h3 {
-  color: gold;
-  margin-top: 12px;
-}
-
-.back-home-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-iframe {
-  width: 100%;
-  max-width: 100%;
-  height: 366px;
-  border: none;
-  background: transparent;
-}
-
+/* PLAYER */
 .player-container {
   background: #111;
   border: 2px solid gold;
   padding: 16px;
-  text-align: center;
   margin-bottom: 32px;
-}
-
-.player-container h3 {
-  color: gold;
-  margin-bottom: 12px;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.08em;
-}
-
-.controls-95 {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.controls-95 button {
-  background: gold;
-  border: 2px solid black;
-  box-shadow: 2px 2px black;
-  font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  padding: 6px 12px;
-  cursor: pointer;
-  letter-spacing: -0.08em;
-  transition: 0.2s;
-}
-
-.controls-95 button:hover {
-  background: #fff200;
 }
 
 /* CHAT */
 #chat-container {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   height: 80vh;
-  background: #000;
   border: 2px solid gold;
-  box-shadow: 4px 4px #000;
-  padding: 0;
-}
-
-#chat-wrapper {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  height: 100%;
 }
 
 #chat-box {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 1em;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.4;
+  padding: 12px;
   background: #111;
-  color: gold;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
 }
 
 #chat-form {
   display: flex;
-  padding: 12px;
-  background: #000;
+  padding: 10px;
   border-top: 2px solid gold;
+  background: #000;
 }
 
 #message-input {
   flex-grow: 1;
-  padding: 0.5em;
-  font-size: 1rem;
-  font-family: 'Courier New', monospace;
   background: #111;
   border: 2px solid gold;
   color: gold;
-  margin-right: 8px;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
 }
 
 #chat-form button {
-  padding: 0.5em 1em;
+  margin-left: 8px;
   background: gold;
   color: black;
   font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  box-shadow: 2px 2px #000;
-  cursor: pointer;
-  white-space: nowrap;
+  padding: 8px 12px;
+  box-shadow: 2px 2px black;
 }
 
-/* Chat Message Styling */
+/* CHAT MESSAGES */
 .chat-message {
   background: #111;
   border: 2px solid gold;
-  padding: 8px 12px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-  font-size: 13px;
-  line-height: 1.3;
+  padding: 8px 10px;
+  margin-bottom: 10px;
 }
 
 .chat-message.you {
   border-left: 3px solid lime;
 }
 
-.chat-message.system {
-  background: #111;
-  color: #999;
-  border-left: 3px dashed gold;
-  font-style: italic;
-}
-
 .chat-meta {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  font-size: 0.75rem;
-  color: gray;
-  margin-bottom: 2px;
-}
-
-.chat-alias {
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
-  color: gold;
-  font-size: 13px;
-}
-
-.chat-timestamp {
   font-size: 0.7rem;
   color: #888;
-  font-family: 'Courier New', monospace;
-  text-align: right;
-  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .chat-text {
   font-size: 13px;
-  color: gold;
-  font-family: 'Courier New', monospace;
-  word-break: break-word;
-  white-space: pre-wrap;
   margin-bottom: 4px;
 }
 
+/* REACTIONS */
 .chat-reactions {
   display: flex;
   gap: 6px;
-  align-items: center;
-  margin-top: 4px;
 }
 
 .reaction-button {
-  font-size: 12px;
-  line-height: 1;
-  padding: 0;
   background: none;
   border: none;
   color: gold;
+  font-size: 12px;
   cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
-}
-
-.reaction-button:hover {
-  opacity: 1;
-  transform: scale(1.1);
 }
 
 .reaction-button.reacted {
   opacity: 1;
-  color: #fff;
+  color: white;
 }
 
-/* Responsive Adjustments */
-@media (min-width: 600px) {
-  .vault-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* MOBILE TUNING */
 @media (max-width: 480px) {
+  body {
+    padding-top: 100px;
+  }
+
   .chat-message {
-    padding: 12px;
+    padding: 10px;
   }
-  
-@media (max-width: 480px) {
+
+  .chat-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .purchase-container {
     max-width: 92%;
-    padding: 20px 16px 24px;
+    padding: 20px 16px;
   }
 
   .album-art {
     max-width: 220px;
-    margin-bottom: 16px;
   }
 
   .purchase-button {
     font-size: 0.95rem;
-    padding: 12px 16px;
-  }
-
-  .purchase-subtext {
-    font-size: 0.75rem;
-  }
-}
-  .chat-meta {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
